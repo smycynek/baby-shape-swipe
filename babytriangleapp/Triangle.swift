@@ -6,16 +6,16 @@ enum Color : UInt32 {
     case red, blue, green, orange, yellow, purple, white
     
     //Calculate size of enum
-    private static let _count: Color.RawValue = {
-        var maxValue: UInt32 = 0
-        while let _ = Color(rawValue: maxValue) {
-            maxValue += 1
+    private static let _enumSize: Color.RawValue = {
+        var max: UInt32 = 0
+        while let _ = Color(rawValue: max) {
+            max += 1
         }
-        return maxValue
+        return max
     }()
     
     static func randomColor() -> Color {
-        let rand = arc4random_uniform(_count)
+        let rand = arc4random_uniform(_enumSize)
         return Color(rawValue: rand)!
     }
     

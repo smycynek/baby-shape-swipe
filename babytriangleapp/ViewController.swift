@@ -66,7 +66,7 @@ class ViewController: UIViewController {
                                      repeats: true)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentShape = MyShape(frame: frame)
-        self.currentShape.backgroundColor = UIColor.white
+        self.currentShape.backgroundColor = UIColor.lightGray
         self.view.addSubview(self.currentShape)
      
         
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = MyShape(frame: frame)
         self.currentShape.removeFromSuperview()
-        shape.backgroundColor = UIColor.white
+        shape.backgroundColor = UIColor.lightGray
         self.view.addSubview(shape)
         self.currentShape = shape
     }
