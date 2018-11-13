@@ -1,11 +1,3 @@
-//
-//  Triangle.swift
-//  draw1
-//
-//  Created by Steven Mycynek on 11/11/18.
-//  Copyright © 2018 Steven Mycynek. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
