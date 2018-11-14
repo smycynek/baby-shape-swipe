@@ -1,8 +1,10 @@
 
 import UIKit
 
-
 final class MyShape: UIView {
+    
+
+
     
     func initTriangle() {
         do {
@@ -13,9 +15,14 @@ final class MyShape: UIView {
         }
     }
     
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initTriangle();
+
+      
+        
     }
     
     
@@ -30,9 +37,7 @@ final class MyShape: UIView {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
         print(triangle.description);
-        self.backgroundColor = UIColor.purple
-     
-        
+  
         context?.move(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y))
         context?.addLine(to: CGPoint(x: triangle.p2.x, y: triangle.p2.y))
         context?.addLine(to: CGPoint(x: triangle.p3.x, y: triangle.p3.y))
@@ -47,15 +52,28 @@ final class MyShape: UIView {
     
 }
 
-
 class ViewController: UIViewController {
 
     
-    
+    var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     var timer = Timer()
     var currentShape = MyShape(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    
+    @objc
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        print("Swipe")
+        self.newTriangle()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture))
+        swipeLeft.direction = .left
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture))
+        swipeRight.direction = .right
+        
+        self.view.addGestureRecognizer(swipeLeft)
+        self.view.addGestureRecognizer(swipeRight)
         
         print(UIScreen.main.bounds.maxX)
         
@@ -66,7 +84,7 @@ class ViewController: UIViewController {
                                      repeats: true)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentShape = MyShape(frame: frame)
-        self.currentShape.backgroundColor = UIColor.lightGray
+        self.currentShape.backgroundColor = background
         self.view.addSubview(self.currentShape)
      
         
@@ -74,16 +92,19 @@ class ViewController: UIViewController {
     
     @objc func tick() {
         
-
+       // newTriangle();
         
+     
+    }
+
+    func newTriangle() {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = MyShape(frame: frame)
         self.currentShape.removeFromSuperview()
-        shape.backgroundColor = UIColor.lightGray
+        shape.backgroundColor = background
         self.view.addSubview(shape)
         self.currentShape = shape
     }
-
 
 }
 
