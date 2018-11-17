@@ -1,110 +1,66 @@
 
 import UIKit
 
-final class MyShape: UIView {
-    
-
-
-    
-    func initTriangle() {
-        do {
-            try self.triangle = makeTriangle(vals: randomPoints(count:6, upperbound:4), colorval: Color.randomColor())
-        }
-        catch {
-            self.triangle = Triangle.makeDefault()
-        }
-    }
-    
-
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.initTriangle();
-
-      
-        
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    
-    var triangle = Triangle.makeDefault();
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        let context =  UIGraphicsGetCurrentContext();
-        print(triangle.description);
-  
-        context?.move(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y))
-        context?.addLine(to: CGPoint(x: triangle.p2.x, y: triangle.p2.y))
-        context?.addLine(to: CGPoint(x: triangle.p3.x, y: triangle.p3.y))
-        context?.addLine(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y))
-        context?.setLineWidth(3.0)
-        var thecolor = Color.Value(colorval: triangle.color)
-        
-        context?.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
-        context?.setFillColor(red: thecolor[0], green: thecolor[1], blue: thecolor[2], alpha: thecolor[3])
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-    }
-    
-}
 
 class ViewController: UIViewController {
 
-    
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     var timer = Timer()
-    var currentShape = MyShape(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    var currentTriangle = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    var currentCircle = CircleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     
     @objc
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        print("Swipe")
-        self.newTriangle()
+    func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
+       // print("Swipe")
+        //self.newTriangle()
+        self.newCircle()
     }
+    
+    @objc
+    func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
+       // print("Swipe")
+        self.newTriangle()
+        //self.newCircle()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture))
-        swipeLeft.direction = .left
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture))
-        swipeRight.direction = .right
+        let window = UIApplication.shared.keyWindow
+        let topPadding = window?.safeAreaInsets.top
+        let bottomPadding = window?.safeAreaInsets.bottom
         
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureLeft))
+        swipeLeft.direction = .left
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureRight))
+        swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
-        
-        print(UIScreen.main.bounds.maxX)
-        
-        timer = Timer.scheduledTimer(timeInterval: 2.0,
-                                     target: self,
-                                     selector: #selector(tick),
-                                     userInfo: nil,
-                                     repeats: true)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
-        self.currentShape = MyShape(frame: frame)
-        self.currentShape.backgroundColor = background
-        self.view.addSubview(self.currentShape)
-     
-        
-    }
-    
-    @objc func tick() {
-        
-       // newTriangle();
-        
-     
+        self.currentTriangle = TriangleView(frame: frame)
+        self.currentTriangle.backgroundColor = background
+        self.view.addSubview(self.currentTriangle)
     }
 
     func newTriangle() {
+        
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
-        let shape = MyShape(frame: frame)
-        self.currentShape.removeFromSuperview()
+        let shape = TriangleView(frame: frame)
+        self.currentTriangle.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(shape)
-        self.currentShape = shape
+        self.currentTriangle = shape
     }
-
+    
+    func newCircle() {
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
+        let shape = CircleView(frame: frame)
+        self.currentCircle.removeFromSuperview()
+        shape.backgroundColor = background
+        self.view.addSubview(shape)
+        self.currentCircle = shape
+    }
+    
 }
 

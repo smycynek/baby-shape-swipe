@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381684B5219CFE64008ACE50 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684B4219CFE64008ACE50 /* Color.swift */; };
+		381684B7219CFEFD008ACE50 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684B6219CFEFD008ACE50 /* Utility.swift */; };
+		381684B9219D7473008ACE50 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684B8219D7472008ACE50 /* TriangleView.swift */; };
+		381684BB219D754D008ACE50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BA219D754D008ACE50 /* Constants.swift */; };
+		381684BD219D76F3008ACE50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BC219D76F3008ACE50 /* Circle.swift */; };
+		381684BF219D78CC008ACE50 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BE219D78CC008ACE50 /* CircleView.swift */; };
 		38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97947219A612600B2D5D0 /* AppDelegate.swift */; };
 		38F9794A219A612600B2D5D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97949219A612600B2D5D0 /* ViewController.swift */; };
 		38F9794D219A612600B2D5D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F9794B219A612600B2D5D0 /* Main.storyboard */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		381684B4219CFE64008ACE50 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		381684B6219CFEFD008ACE50 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		381684B8219D7472008ACE50 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		381684BA219D754D008ACE50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		381684BC219D76F3008ACE50 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		381684BE219D78CC008ACE50 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		38F97944219A612600B2D5D0 /* babytriangleapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babytriangleapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F97947219A612600B2D5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F97949219A612600B2D5D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +69,12 @@
 			isa = PBXGroup;
 			children = (
 				38F97959219A615800B2D5D0 /* Triangle.swift */,
+				381684BC219D76F3008ACE50 /* Circle.swift */,
+				381684B8219D7472008ACE50 /* TriangleView.swift */,
+				381684BE219D78CC008ACE50 /* CircleView.swift */,
+				381684B6219CFEFD008ACE50 /* Utility.swift */,
+				381684B4219CFE64008ACE50 /* Color.swift */,
+				381684BA219D754D008ACE50 /* Constants.swift */,
 				38F97947219A612600B2D5D0 /* AppDelegate.swift */,
 				38F97949219A612600B2D5D0 /* ViewController.swift */,
 				38F9794B219A612600B2D5D0 /* Main.storyboard */,
@@ -138,8 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381684BF219D78CC008ACE50 /* CircleView.swift in Sources */,
+				381684B7219CFEFD008ACE50 /* Utility.swift in Sources */,
+				381684BD219D76F3008ACE50 /* Circle.swift in Sources */,
 				38F9795B219A615800B2D5D0 /* Triangle.swift in Sources */,
+				381684B5219CFE64008ACE50 /* Color.swift in Sources */,
 				38F9794A219A612600B2D5D0 /* ViewController.swift in Sources */,
+				381684BB219D754D008ACE50 /* Constants.swift in Sources */,
+				381684B9219D7473008ACE50 /* TriangleView.swift in Sources */,
 				38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
