@@ -2,35 +2,37 @@ import Foundation
 import UIKit
 
 
-class Circle {
-    init(centerval: Point, radiusval: Int, colorval: UIColor) {
-        center = centerval;
-        radius = radiusval
+class Square {
+    init(upperleftval: Point, sideval: Int, colorval: UIColor) {
+        side = sideval;
+        upperleft = upperleftval
         color = colorval
     }
     
-    static func makeDefault() -> Circle {
+
+    static func makeDefault() -> Square {
         
         let point1 = mapToScreen (point: Point(xval:3, yval:3), offsetx: 0, offsety: 40)
         let radius1 = mapToScreen(val: 3, offset : 0)
-        let circle = Circle(centerval: point1,
-                            radiusval: radius1,
-                            colorval: ColorPicker.randomColor()
-                            )
-        return circle
-
+        let square = Square(upperleftval: point1, sideval: radius1, colorval: ColorPicker.randomColor())
+                        
+        
+        return square
+        
     }
 
-    var description: String { return "\(color.description) circle: \(center.description), radius \(radius)" }
-    var center: Point
-    var radius: Int
+    
+
+    var description: String { return "\(color.description) square: \(upperleft.description), side \(side)" }
+    var upperleft: Point
+    var side: Int
     var color: UIColor
 }
 
 
 
-func makeCircle(centerval: Point, radiusval: Int, colorval: UIColor) -> Circle {
+func makeSquare(upperleftval: Point, sideval: Int, colorval: UIColor) -> Square {
     
-    return Circle(centerval: mapToScreen(point: centerval, offsetx: 0, offsety: 40), radiusval: mapToScreen(val: radiusval, offset : 0), colorval: colorval)
+    return Square(upperleftval: mapToScreen(point: upperleftval, offsetx: 0, offsety: 40), sideval: mapToScreen(val: sideval, offset : 0), colorval: colorval)
 }
 

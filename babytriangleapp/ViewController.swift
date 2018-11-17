@@ -8,7 +8,8 @@ class ViewController: UIViewController {
     var timer = Timer()
     var currentTriangle = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     var currentCircle = CircleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
-    
+    var currentSquare = SquareView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    var currentRectangle = RectangleVIew(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
        // print("Swipe")
@@ -20,6 +21,20 @@ class ViewController: UIViewController {
     func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
        // print("Swipe")
         self.newTriangle()
+        //self.newCircle()
+    }
+    
+    @objc
+    func handleGestureDown(gesture: UISwipeGestureRecognizer) -> Void {
+        // print("Swipe")
+        self.newSquare()
+        //self.newCircle()
+    }
+    
+    @objc
+    func handleGestureUp(gesture: UISwipeGestureRecognizer) -> Void {
+        // print("Swipe")
+        self.newRectangle()
         //self.newCircle()
     }
     
@@ -35,8 +50,15 @@ class ViewController: UIViewController {
         swipeLeft.direction = .left
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureRight))
         swipeRight.direction = .right
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureDown))
+        swipeDown.direction = .down
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureUp))
+        swipeUp.direction = .up
+        
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeDown)
+        self.view.addGestureRecognizer(swipeUp)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentTriangle = TriangleView(frame: frame)
         self.currentTriangle.backgroundColor = background
@@ -60,6 +82,25 @@ class ViewController: UIViewController {
         shape.backgroundColor = background
         self.view.addSubview(shape)
         self.currentCircle = shape
+    }
+    
+    func newSquare() {
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
+        let shape = SquareView(frame: frame)
+        self.currentSquare.removeFromSuperview()
+        shape.backgroundColor = background
+        self.view.addSubview(shape)
+        self.currentSquare = shape
+    }
+   
+    
+    func newRectangle() {
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
+        let shape = RectangleVIew(frame: frame)
+        self.currentRectangle.removeFromSuperview()
+        shape.backgroundColor = background
+        self.view.addSubview(shape)
+        self.currentRectangle = shape
     }
     
 }

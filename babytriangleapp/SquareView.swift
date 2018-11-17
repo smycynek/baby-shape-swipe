@@ -3,9 +3,9 @@
 import Foundation
 import UIKit
 
-final class CircleView: UIView {
+final class SquareView: UIView {
     
-    func initCircle() {
+    func initSquare() {
         do {
             var radius = getRandomRadiusWIthinScreenInModelSpace();
            
@@ -19,44 +19,49 @@ final class CircleView: UIView {
             
             
             
-            try self.circle = makeCircle(centerval: center, radiusval: radius, colorval: ColorPicker.randomColor())
-            print (self.circle.description)
+            try self.square = makeSquare(upperleftval: center, sideval: radius, colorval: ColorPicker.randomColor())
+            print (self.square.description)
         }
         catch {
-            self.circle = Circle.makeDefault()
+            self.square = Square.makeDefault()
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initCircle();
+        self.initSquare();
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    var circle = Circle.makeDefault();
+    var square = Square.makeDefault();
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
+        print(square.description);
+        
+        
+        context?.move(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y))
+        context?.addLine(to: CGPoint(x: square.upperleft.x + square.side, y: square.upperleft.y))
+        context?.addLine(to: CGPoint(x: square.upperleft.x + square.side, y: square.upperleft.y + square.side))
+        context?.addLine(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y + square.side))
+        context?.addLine(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y))
+        
+        context?.setLineWidth(3.0)
+        context?.setStrokeColor(UIColor.black.cgColor)
+        context?.setFillColor(square.color.cgColor)
+        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
+      
        
         
 
         
       //  CGContextMoveToPoint(context, centerX + radius*cos(startAngle), centerY + radius*sin(startAngle))
         
-        context?.move(to: CGPoint(x: circle.center.x + circle.radius, y: circle.center.y))
-
-        context?.addArc(center:
-            CGPoint(x: circle.center.x, y: circle.center.y),
-                        radius: CGFloat (circle.radius),
-                        startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
-        context?.setLineWidth(3.0)
-        context?.setStrokeColor(UIColor.black.cgColor)
-        context?.setFillColor(circle.color.cgColor)
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
+  
         
         drawGridPoints(offsetxval : 0, offsetyval : 40)
       

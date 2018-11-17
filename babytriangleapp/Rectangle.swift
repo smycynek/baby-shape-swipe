@@ -2,37 +2,46 @@ import Foundation
 import UIKit
 
 
-class Square {
-    init(upperleftval: Point, sideval: Int, colorval: UIColor) {
-        side = sideval;
+class Rectangle {
+    init(upperleftval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) {
+        side1 = sideval1;
+        side2 = sideval2
         upperleft = upperleftval
         color = colorval
     }
     
 
-    static func makeDefault() -> Square {
+    static func makeDefault() -> Rectangle {
         
         let point1 = mapToScreen (point: Point(xval:3, yval:3), offsetx: 0, offsety: 40)
-        let radius1 = mapToScreen(val: 3, offset : 0)
-        let square = Square(upperleftval: point1, sideval: radius1, colorval: ColorPicker.randomColor())
+        let side1 = mapToScreen(val: 3, offset : 0)
+        let side2 = mapToScreen(val: 5, offset : 0)
+        
+        let rectangle = Rectangle(upperleftval: point1, sideval1: side1, sideval2: side2, colorval: ColorPicker.randomColor())
                         
         
-        return square
+        return rectangle
         
     }
 
     
 
-    var description: String { return "\(color.description) square: \(upperleft.description), side \(side)" }
+    var description: String { return "\(color.description) rectangle: \(upperleft.description), side1 \(side2) side2 \(side2)" }
     var upperleft: Point
-    var side: Int
+    var side1: Int
+    var side2: Int
     var color: UIColor
 }
 
 
 
-func makeSquare(upperleftval: Point, sideval: Int, colorval: UIColor) -> Square {
+func makeRectangle(upperleftval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) -> Rectangle {
     
-    return Square(upperleftval: mapToScreen(point: upperleftval, offsetx: 0, offsety: 40), sideval: mapToScreen(val: sideval, offset : 0), colorval: colorval)
+    return Rectangle(upperleftval: mapToScreen(point: upperleftval, offsetx: 0, offsety: 40),
+                     sideval1: mapToScreen(val: sideval1, offset : 0),
+                     
+                     sideval2: mapToScreen(val: sideval2, offset : 0),
+                     
+                     colorval: colorval)
 }
 
