@@ -17,6 +17,18 @@ class ViewController: UIViewController {
     }
     
     @objc
+    func handlePinchGesture(gesture: UIPinchGestureRecognizer) -> Void {
+        if (Constants.drawGrid == false) {
+        Constants.drawGrid = true
+        }
+        else
+        {
+            Constants.drawGrid = false
+        }
+        //force redraw
+        //drawGridPoints(offsetxval: 0, offsetyval : 0)
+    }
+    @objc
     func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
     
         self.newTriangle()
@@ -75,8 +87,10 @@ class ViewController: UIViewController {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureUp))
         swipeUp.direction = .up
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture))
-
         
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.handlePinchGesture))
+        
+        self.view.addGestureRecognizer(pinch)
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)
