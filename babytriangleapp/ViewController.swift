@@ -4,6 +4,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     var timer = Timer()
     var currentTriangle = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
@@ -17,12 +18,15 @@ class ViewController: UIViewController {
     }
     
     @objc
-    func handlePinchGesture(gesture: UIPinchGestureRecognizer) -> Void {
+    func handleDoubleTapGesture(gesture: UIPinchGestureRecognizer) -> Void {
+        print("double touch")
         if (Constants.drawGrid == false) {
+        print("set true")
         Constants.drawGrid = true
         }
         else
         {
+            print("set false")
             Constants.drawGrid = false
         }
         //force redraw
@@ -49,6 +53,7 @@ class ViewController: UIViewController {
      
     }
  
+  
     @objc
     func handleTapGesture(gesture: UITapGestureRecognizer) -> Void {
         let choice = Int(arc4random_uniform(UInt32(4)))
@@ -88,14 +93,18 @@ class ViewController: UIViewController {
         swipeUp.direction = .up
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture))
         
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.handlePinchGesture))
+        let doubletap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapGesture))
+        doubletap.numberOfTouchesRequired = 2
+       
         
-        self.view.addGestureRecognizer(pinch)
+        
+        
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)
         self.view.addGestureRecognizer(swipeUp)
         self.view.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(doubletap)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentTriangle = TriangleView(frame: frame)
         self.currentTriangle.backgroundColor = background
@@ -139,6 +148,8 @@ class ViewController: UIViewController {
         self.view.addSubview(shape)
         self.currentRectangle = shape
     }
+    
+    
     
 }
 
