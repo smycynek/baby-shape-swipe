@@ -39,7 +39,6 @@ class Triangle {
 
 func makeTriangle(vals: [Point], colorval: UIColor) throws -> Triangle {
     if colinear(vals: vals) {
-        print("Colinear!")
         throw ColinearError.runtimeError("Colinear!")
     }
     let point1 = mapToScreen (point: vals[0], offsetx: 0, offsety : 0)

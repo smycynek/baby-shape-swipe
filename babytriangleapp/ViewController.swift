@@ -12,30 +12,50 @@ class ViewController: UIViewController {
     var currentRectangle = RectangleVIew(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
-       // print("Swipe")
-        //self.newTriangle()
+
         self.newCircle()
     }
     
     @objc
     func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
-       // print("Swipe")
+    
         self.newTriangle()
-        //self.newCircle()
+   
     }
     
     @objc
     func handleGestureDown(gesture: UISwipeGestureRecognizer) -> Void {
-        // print("Swipe")
+     
         self.newSquare()
-        //self.newCircle()
+       
     }
     
     @objc
     func handleGestureUp(gesture: UISwipeGestureRecognizer) -> Void {
-        // print("Swipe")
+    
         self.newRectangle()
-        //self.newCircle()
+     
+    }
+ 
+    @objc
+    func handleTapGesture(gesture: UITapGestureRecognizer) -> Void {
+        let choice = Int(arc4random_uniform(UInt32(4)))
+
+        if (choice == 0 ) {
+            self.newRectangle()
+        }
+        else if (choice == 1) {
+            self.newTriangle()
+        }
+        
+        else if (choice == 2) {
+            self.newSquare()
+        }
+        
+        else
+        {
+            self.newCircle()
+        }
     }
     
     override func viewDidLoad() {
@@ -54,11 +74,14 @@ class ViewController: UIViewController {
         swipeDown.direction = .down
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureUp))
         swipeUp.direction = .up
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture))
+
         
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)
         self.view.addGestureRecognizer(swipeUp)
+        self.view.addGestureRecognizer(tap)
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentTriangle = TriangleView(frame: frame)
         self.currentTriangle.backgroundColor = background

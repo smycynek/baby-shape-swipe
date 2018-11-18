@@ -3,10 +3,10 @@ import UIKit
 
 
 class Rectangle {
-    init(upperleftval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) {
+    init(centerval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) {
         side1 = sideval1;
         side2 = sideval2
-        upperleft = upperleftval
+        upperleft = centerval
         color = colorval
     }
     
@@ -17,7 +17,7 @@ class Rectangle {
         let side1 = mapToScreen(val: 3, offset : 0)
         let side2 = mapToScreen(val: 5, offset : 0)
         
-        let rectangle = Rectangle(upperleftval: point1, sideval1: side1, sideval2: side2, colorval: ColorPicker.randomColor())
+        let rectangle = Rectangle(centerval: point1, sideval1: side1, sideval2: side2, colorval: ColorPicker.randomColor())
                         
         
         return rectangle
@@ -35,9 +35,11 @@ class Rectangle {
 
 
 
-func makeRectangle(upperleftval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) -> Rectangle {
+func makeRectangle(centerval: Point, sideval1: Int, sideval2: Int, colorval: UIColor) -> Rectangle {
+   
     
-    return Rectangle(upperleftval: mapToScreen(point: upperleftval, offsetx: 0, offsety: 40),
+    
+    return Rectangle(centerval: mapToScreen(point: centerval, offsetx: 0, offsety: 40),
                      sideval1: mapToScreen(val: sideval1, offset : 0),
                      
                      sideval2: mapToScreen(val: sideval2, offset : 0),

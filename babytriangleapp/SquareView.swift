@@ -11,16 +11,14 @@ final class SquareView: UIView {
            
             
             var marginval = radius;
-            print("Marginval");
-            print(marginval);
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
             
             
             
             
-            try self.square = makeSquare(upperleftval: center, sideval: radius, colorval: ColorPicker.randomColor())
-            print (self.square.description)
+            try self.square = makeSquare(centerval: center, sideval: radius, colorval: ColorPicker.randomColor())
+         
         }
         catch {
             self.square = Square.makeDefault()
@@ -41,14 +39,14 @@ final class SquareView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
-        print(square.description);
+  
         
-        
-        context?.move(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y))
-        context?.addLine(to: CGPoint(x: square.upperleft.x + square.side, y: square.upperleft.y))
-        context?.addLine(to: CGPoint(x: square.upperleft.x + square.side, y: square.upperleft.y + square.side))
-        context?.addLine(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y + square.side))
-        context?.addLine(to: CGPoint(x: square.upperleft.x, y: square.upperleft.y))
+        let offset = square.side/2
+        context?.move(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
+        context?.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y - offset))
+        context?.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y + offset))
+        context?.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y + offset))
+        context?.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         
         context?.setLineWidth(3.0)
         context?.setStrokeColor(UIColor.black.cgColor)

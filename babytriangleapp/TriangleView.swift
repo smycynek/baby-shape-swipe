@@ -37,7 +37,7 @@ final class TriangleView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
-        print(triangle.description);
+ 
         
         
         context?.move(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y))

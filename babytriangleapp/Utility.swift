@@ -74,7 +74,8 @@ func getGridPoints(savemargin : Int) -> [Point] {
 
 
 
-func drawGridPoints(offsetxval : Int, offsetyval: Int) -> Int {
+func drawGridPoints(offsetxval : Int, offsetyval: Int) {
+    if (Constants.drawGrid == true) {
     let context =  UIGraphicsGetCurrentContext();
     for gpoint in getGridPoints(savemargin: 0) {
         let point_mapped = mapToScreen(point: gpoint, offsetx: offsetxval, offsety : offsetyval)
@@ -86,17 +87,17 @@ func drawGridPoints(offsetxval : Int, offsetyval: Int) -> Int {
         context?.setFillColor(UIColor.blue.cgColor)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-    
+        }
     }
-    return 0
+    return
 }
 func getRandomRadiusWIthinScreenInModelSpace() -> Int {
 
     let pointCount = getPointCountsForScreenDimensions()
-    print("PC")
+  
     
     var minCount = pointCount.min()!
-    print(minCount);
+ 
     let upperBound = Int( minCount/2) + 1;
     
     var rad = (Int(arc4random_uniform(UInt32(upperBound))));

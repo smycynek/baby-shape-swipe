@@ -10,17 +10,16 @@ final class RectangleVIew: UIView {
             var side1 = getRandomRadiusWIthinScreenInModelSpace();
             var side2 = getRandomRadiusWIthinScreenInModelSpace();
             
-            var marginval = 0;
-            print("Marginval");
-            print(marginval);
+            var marginval = 3;
+     
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
             
             
             
             
-            try self.rectangle = makeRectangle(upperleftval: center, sideval1: side1, sideval2: side2, colorval: ColorPicker.randomColor())
-            print (self.rectangle.description)
+            try self.rectangle = makeRectangle(centerval: center, sideval1: side1, sideval2: side2, colorval: ColorPicker.randomColor())
+        
         }
         catch {
             self.rectangle = Rectangle.makeDefault()
@@ -41,14 +40,17 @@ final class RectangleVIew: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
-        print(rectangle.description);
+    
+        var offsetx = rectangle.side1/2
+        var offsety = rectangle.side2/2
         
         
-        context?.move(to: CGPoint(x: rectangle.upperleft.x, y: rectangle.upperleft.y))
-        context?.addLine(to: CGPoint(x: rectangle.upperleft.x + rectangle.side1, y: rectangle.upperleft.y))
-        context?.addLine(to: CGPoint(x: rectangle.upperleft.x + rectangle.side1, y: rectangle.upperleft.y + rectangle.side2))
-        context?.addLine(to: CGPoint(x: rectangle.upperleft.x, y: rectangle.upperleft.y + rectangle.side2))
-        context?.addLine(to: CGPoint(x: rectangle.upperleft.x, y: rectangle.upperleft.y))
+        context?.move(to: CGPoint(x: rectangle.upperleft.x - offsetx, y: rectangle.upperleft.y - offsety))
+        
+        context?.addLine(to: CGPoint(x: rectangle.upperleft.x + offsetx, y: rectangle.upperleft.y - offsety))
+        context?.addLine(to: CGPoint(x: rectangle.upperleft.x + offsetx, y: rectangle.upperleft.y + offsety))
+        context?.addLine(to: CGPoint(x: rectangle.upperleft.x - offsetx, y: rectangle.upperleft.y + offsety))
+        context?.addLine(to: CGPoint(x: rectangle.upperleft.x - offsetx, y: rectangle.upperleft.y - offsety))
         
         context?.setLineWidth(3.0)
         context?.setStrokeColor(UIColor.black.cgColor)
@@ -56,11 +58,6 @@ final class RectangleVIew: UIView {
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
       
        
-        
-
-        
-      //  CGContextMoveToPoint(context, centerX + radius*cos(startAngle), centerY + radius*sin(startAngle))
-        
   
         
         drawGridPoints(offsetxval : 0, offsetyval : 40)

@@ -11,8 +11,8 @@ final class CircleView: UIView {
            
             
             var marginval = radius;
-            print("Marginval");
-            print(marginval);
+
+   
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
             
@@ -20,7 +20,7 @@ final class CircleView: UIView {
             
             
             try self.circle = makeCircle(centerval: center, radiusval: radius, colorval: ColorPicker.randomColor())
-            print (self.circle.description)
+     
         }
         catch {
             self.circle = Circle.makeDefault()
