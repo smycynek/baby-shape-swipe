@@ -3,25 +3,19 @@ import UIKit
 
 
 class Square {
-    init(centerval: Point, sideval: Int, colorval: UIColor) {
-        side = sideval;
-        center = centerval
-        color = colorval
+    init(center: Point, side: Int, color: UIColor) {
+        self.side = side;
+        self.center = center;
+        self.color = color;
     }
     
-
     static func makeDefault() -> Square {
         
-        let point1 = mapToScreen (point: Point(xval:3, yval:3), offsetx: 0, offsety: 40)
-        let radius1 = mapToScreen(val: 3, offset : 0)
-        let square = Square(centerval: point1, sideval: radius1, colorval: ColorPicker.randomColor())
-                        
-        
+        let point1 = mapToScreen (point: Point(x:3, y:3), yOffset: 40)
+        let radius = mapToScreen(val: 3)
+        let square = Square(center: point1, side: radius, color: ColorPicker.randomColor())
         return square
-        
     }
-
-    
 
     var description: String { return "\(color.description) square: \(center.description), side \(side)" }
     var center: Point
@@ -29,10 +23,7 @@ class Square {
     var color: UIColor
 }
 
-
-
-func makeSquare(centerval: Point, sideval: Int, colorval: UIColor) -> Square {
-    
-    return Square(centerval: mapToScreen(point: centerval, offsetx: 0, offsety: 40), sideval: mapToScreen(val: sideval, offset : 0), colorval: colorval)
+func makeSquare(center: Point, side: Int, color: UIColor) -> Square {    
+    return Square(center: mapToScreen(point: center, yOffset: 40), side: mapToScreen(val: side), color: color)
 }
 

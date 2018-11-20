@@ -3,22 +3,21 @@ import UIKit
 
 
 class Circle {
-    init(centerval: Point, radiusval: Int, colorval: UIColor) {
-        center = centerval;
-        radius = radiusval
-        color = colorval
+    init(center: Point, radius: Int, color: UIColor) {
+        self.center = center;
+        self.radius = radius;
+        self.color = color;
     }
     
     static func makeDefault() -> Circle {
         
-        let point1 = mapToScreen (point: Point(xval:3, yval:3), offsetx: 0, offsety: 40)
-        let radius1 = mapToScreen(val: 3, offset : 0)
-        let circle = Circle(centerval: point1,
-                            radiusval: radius1,
-                            colorval: ColorPicker.randomColor()
+        let point1 = mapToScreen (point: Point(x:3, y:3), yOffset: 40)
+        let radius = mapToScreen(val: 3, offset : 0)
+        let circle = Circle(center: point1,
+                            radius: radius,
+                            color: ColorPicker.randomColor()
                             )
         return circle
-
     }
 
     var description: String { return "\(color.description) circle: \(center.description), radius \(radius)" }
@@ -27,10 +26,8 @@ class Circle {
     var color: UIColor
 }
 
-
-
-func makeCircle(centerval: Point, radiusval: Int, colorval: UIColor) -> Circle {
+func makeCircle(center: Point, radius: Int, color: UIColor) -> Circle {
     
-    return Circle(centerval: mapToScreen(point: centerval, offsetx: 0, offsety: 40), radiusval: mapToScreen(val: radiusval, offset : 0), colorval: colorval)
+    return Circle(center: mapToScreen(point: center, yOffset: 40), radius: mapToScreen(val: radius), color: color)
 }
 

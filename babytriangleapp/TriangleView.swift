@@ -16,7 +16,7 @@ final class TriangleView: UIView {
             let points = getRandomSafeModelPoints(count : 3, margin: 1)
                 //getRandomSafeModelPointgetRandomPointsWithinScreenInModelSpace(count: 3, margin:0)
             
-            try self.triangle = makeTriangle(vals: points, colorval: ColorPicker.randomColor())
+            try self.triangle = makeTriangle(vals: points, color: ColorPicker.randomColor())
         }
         catch {
             self.triangle = Triangle.makeDefault()
@@ -48,6 +48,6 @@ final class TriangleView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(triangle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints(offsetxval: 0, offsetyval : 0)
+        drawGridPoints()
     }
 }

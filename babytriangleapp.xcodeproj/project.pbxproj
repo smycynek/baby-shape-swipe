@@ -17,6 +17,7 @@
 		381684BB219D754D008ACE50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BA219D754D008ACE50 /* Constants.swift */; };
 		381684BD219D76F3008ACE50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BC219D76F3008ACE50 /* Circle.swift */; };
 		381684BF219D78CC008ACE50 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381684BE219D78CC008ACE50 /* CircleView.swift */; };
+		3847F31F21A3A3A00098F9F4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3847F31E21A3A3A00098F9F4 /* Settings.swift */; };
 		38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97947219A612600B2D5D0 /* AppDelegate.swift */; };
 		38F9794A219A612600B2D5D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97949219A612600B2D5D0 /* ViewController.swift */; };
 		38F9794D219A612600B2D5D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F9794B219A612600B2D5D0 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		381684BA219D754D008ACE50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		381684BC219D76F3008ACE50 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		381684BE219D78CC008ACE50 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		3847F31E21A3A3A00098F9F4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		38F97944219A612600B2D5D0 /* babytriangleapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babytriangleapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F97947219A612600B2D5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F97949219A612600B2D5D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				381684B6219CFEFD008ACE50 /* Utility.swift */,
 				381684B4219CFE64008ACE50 /* Color.swift */,
 				381684BA219D754D008ACE50 /* Constants.swift */,
+				3847F31E21A3A3A00098F9F4 /* Settings.swift */,
 				38F97947219A612600B2D5D0 /* AppDelegate.swift */,
 				38F97949219A612600B2D5D0 /* ViewController.swift */,
 				38F9794B219A612600B2D5D0 /* Main.storyboard */,
@@ -172,6 +175,7 @@
 				380052D221A0B19600508F74 /* RectangleView.swift in Sources */,
 				381684BF219D78CC008ACE50 /* CircleView.swift in Sources */,
 				381684B7219CFEFD008ACE50 /* Utility.swift in Sources */,
+				3847F31F21A3A3A00098F9F4 /* Settings.swift in Sources */,
 				380052D021A0B07300508F74 /* Rectangle.swift in Sources */,
 				381684BD219D76F3008ACE50 /* Circle.swift in Sources */,
 				380052CE21A0AD4900508F74 /* SquareView.swift in Sources */,

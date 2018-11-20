@@ -6,27 +6,14 @@ import UIKit
 final class CircleView: UIView {
     
     func initCircle() {
-        do {
-            var radius = getRandomRadiusWIthinScreenInModelSpace();
-           
-            
-            var marginval = radius;
-
-   
+       
+            let radius = getRandomRadiusWIthinScreenInModelSpace();
+            let marginval = radius;
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
-            
-            
-            
-            
-            try self.circle = makeCircle(centerval: center, radiusval: radius, colorval: ColorPicker.randomColor())
+            self.circle = makeCircle(center: center, radius: radius, color: ColorPicker.randomColor())
      
         }
-        catch {
-            self.circle = Circle.makeDefault()
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initCircle();
@@ -42,11 +29,6 @@ final class CircleView: UIView {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
        
-        
-
-        
-      //  CGContextMoveToPoint(context, centerX + radius*cos(startAngle), centerY + radius*sin(startAngle))
-        
         context?.move(to: CGPoint(x: circle.center.x + circle.radius, y: circle.center.y))
 
         context?.addArc(center:
@@ -58,7 +40,7 @@ final class CircleView: UIView {
         context?.setFillColor(circle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
         
-        drawGridPoints(offsetxval : 0, offsetyval : 40)
+        drawGridPoints(yOffset : 40)
       
     }
 }

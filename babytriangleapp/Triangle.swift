@@ -1,28 +1,26 @@
 import Foundation
 import UIKit
 
-
 class Triangle {
-    init(p1val: Point, p2val: Point, p3val: Point, colorval: UIColor) {
-        p1 = p1val
-        p2 = p2val
-        p3 = p3val
-        color = colorval
+    init(p1val: Point, p2val: Point, p3val: Point, color: UIColor) {
+        self.p1 = p1val
+        self.p2 = p2val
+        self.p3 = p3val
+        self.color = color
     }
     
     static func makeDefault() -> Triangle {
         
-        let point1 = mapToScreen (point: Point(xval:1, yval:1), offsetx: 0, offsety : 0)
-        let point2 = mapToScreen (point: Point(xval:4, yval:4), offsetx: 0, offsety : 0)
-        let point3 = mapToScreen (point: Point(xval:1, yval:4), offsetx: 0, offsety: 0)
+        let point1 = mapToScreen (point: Point(x:1, y:1))
+        let point2 = mapToScreen (point: Point(x:4, y:4))
+        let point3 = mapToScreen (point: Point(x:1, y:4))
         
         let triangle = Triangle(p1val: point1,
                             p2val: point2,
                             p3val: point3,
-                            colorval: ColorPicker.randomColor()
+                            color: ColorPicker.randomColor()
                             )
         return triangle
-
     }
     
     var description: String { return "\(color.description) triangle: \(p1.description), \(p2.description), \(p3.description)" }
@@ -32,19 +30,14 @@ class Triangle {
     var color: UIColor
 }
 
-
-// Make a triangle from an array of six integers and a color value
-// Reject input and throw exception if points are colinear
-
-
-func makeTriangle(vals: [Point], colorval: UIColor) throws -> Triangle {
+func makeTriangle(vals: [Point], color: UIColor) throws -> Triangle {
     if colinear(vals: vals) {
         throw ColinearError.runtimeError("Colinear!")
     }
-    let point1 = mapToScreen (point: vals[0], offsetx: 0, offsety : 0)
-    let point2 = mapToScreen (point: vals[1], offsetx: 0, offsety : 0)
-    let point3 = mapToScreen (point: vals[2], offsetx: 0, offsety :0)
+    let point1 = mapToScreen (point: vals[0])
+    let point2 = mapToScreen (point: vals[1])
+    let point3 = mapToScreen (point: vals[2])
     
-    return Triangle(p1val: point1, p2val:point2, p3val:point3, colorval: colorval)
+    return Triangle(p1val: point1, p2val:point2, p3val:point3, color: color)
 }
 

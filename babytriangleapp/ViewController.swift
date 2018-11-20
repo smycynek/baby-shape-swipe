@@ -4,83 +4,72 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    var timer = Timer()
+
     var currentTriangle = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     var currentCircle = CircleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     var currentSquare = SquareView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     var currentRectangle = RectangleVIew(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
 
         self.newCircle()
     }
     
-    @objc
-    func handleDoubleTapGesture(gesture: UIPinchGestureRecognizer) -> Void {
-        print("double touch")
-        if (Constants.drawGrid == false) {
-        print("set true")
-        Constants.drawGrid = true
-        }
-        else
-        {
-            print("set false")
-            Constants.drawGrid = false
-        }
-        //force redraw
-        //drawGridPoints(offsetxval: 0, offsetyval : 0)
-    }
+
     @objc
     func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
-    
         self.newTriangle()
-   
     }
     
     @objc
     func handleGestureDown(gesture: UISwipeGestureRecognizer) -> Void {
-     
         self.newSquare()
-       
     }
     
     @objc
     func handleGestureUp(gesture: UISwipeGestureRecognizer) -> Void {
-    
         self.newRectangle()
-     
     }
  
-  
     @objc
-    func handleTapGesture(gesture: UITapGestureRecognizer) -> Void {
-        let choice = Int(arc4random_uniform(UInt32(4)))
-
-        if (choice == 0 ) {
-            self.newRectangle()
-        }
-        else if (choice == 1) {
-            self.newTriangle()
-        }
-        
-        else if (choice == 2) {
-            self.newSquare()
-        }
-        
-        else
+    func handleGestureTap(gesture: UITapGestureRecognizer) -> Void {
+        let randomShapeType = Int(arc4random_uniform(UInt32(4)))
+        switch (randomShapeType)
         {
+        case 0:
+            self.newRectangle()
+        case 1:
+            self.newTriangle()
+        case 2:
+            self.newSquare()
+        default:
             self.newCircle()
         }
+    }
+
+    
+    @objc
+    func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) -> Void {
+        if (Settings.drawGrid == false) {
+            print("set true")
+            Settings.drawGrid = true
+        }
+        else
+        {
+            print("set false")
+            Settings.drawGrid = false
+        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let window = UIApplication.shared.keyWindow
-        let topPadding = window?.safeAreaInsets.top
-        let bottomPadding = window?.safeAreaInsets.bottom
+        // let window = UIApplication.shared.keyWindow
+        //  let topPadding = window?.safeAreaInsets.top
+        // let bottomPadding = window?.safeAreaInsets.bottom
         
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureLeft))
@@ -91,20 +80,19 @@ class ViewController: UIViewController {
         swipeDown.direction = .down
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureUp))
         swipeUp.direction = .up
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture))
         
-        let doubletap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapGesture))
-        doubletap.numberOfTouchesRequired = 2
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTap))
+        
+        let twoFingerTap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTwoFingerTap))
+        twoFingerTap.numberOfTouchesRequired = 2
        
-        
-        
-        
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)
         self.view.addGestureRecognizer(swipeUp)
         self.view.addGestureRecognizer(tap)
-        self.view.addGestureRecognizer(doubletap)
+        self.view.addGestureRecognizer(twoFingerTap)
+        
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         self.currentTriangle = TriangleView(frame: frame)
         self.currentTriangle.backgroundColor = background
