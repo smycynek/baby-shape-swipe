@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 
@@ -8,8 +7,6 @@ class ColorPicker
                                   UIColor.brown, UIColor.white, UIColor.purple, UIColor.cyan,
                                   UIColor.orange, UIColor.yellow, UIColor(red: 255/255, green: 228/255, blue: 225/255, alpha: 1.0) )
 
-    
-    
     static func randomColor() -> UIColor {
         return ColorPicker.colors.randomElement()!;
     }

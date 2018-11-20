@@ -1,11 +1,3 @@
-//
-//  Utility.swift
-//  babytriangleapp
-//
-//  Created by Steven Mycynek on 11/14/18.
-//  Copyright © 2018 Steven Mycynek. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -47,7 +39,6 @@ func mapToScreen(point: Point, xOffset: Int=0, yOffset: Int=0) -> Point {
 
 func mapToScreen(val: Int, offset: Int=0) -> Int {
     return (val * Constants.pointSpace) + offset
-
 }
 
 func getPointCountsForScreenDimensions() -> [Int] {
@@ -69,8 +60,6 @@ func getGridPoints(safeMargin : Int=0) -> [Point] {
     }
     return points
 }
-
-
 
 func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
     if (Settings.drawGrid == true) {
@@ -97,43 +86,29 @@ func getRandomRadiusWIthinScreenInModelSpace() -> Int {
     let upperBound = Int( minCount/2) + 1;
     
     var rad = (Int(arc4random_uniform(UInt32(upperBound))));
-    if (rad == 0 )
-    {
-        
+    if (rad == 0 ) {
         rad +=  1
     }
     return rad
-
 }
 
 func getRandomPointsWithinScreenInModelSpace(count: Int, margin: Int=0) -> [Point] {
     var pointCounts = getPointCountsForScreenDimensions()
     var points = [Point]()
-
-    
     for _ in 1...count {
-        
-      
         let x = Int(arc4random_uniform(UInt32(pointCounts[0])))
         let y = Int(arc4random_uniform(UInt32(pointCounts[1])))
-    
-        
-        
         points.append(Point(x: Int(x), y: Int(y)))
     }
     return points
 }
 
-
 func getRandomSafeModelPoints(count: Int, margin : Int=0) -> [Point] {
     let gpoints = getGridPoints(safeMargin: margin)
-    
-    
     var points = [Point]()
-    
     for _ in 1...count {
         points.append(gpoints.randomElement()!)
     }
         return points
-    }
+}
 

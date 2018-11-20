@@ -1,5 +1,3 @@
-
-
 import Foundation
 import UIKit
 
@@ -22,12 +20,9 @@ final class SquareView: UIView {
         super.init(coder: coder)
     }
     
-    var square = Square.makeDefault();
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
-        
         let offset = square.side/2
         context?.move(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         context?.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y - offset))
@@ -40,8 +35,7 @@ final class SquareView: UIView {
         context?.setFillColor(square.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
 
-        
-        drawGridPoints(yOffset : 40)
-      
+        drawGridPoints(yOffset : 40)      
     }
+    var square = Square.makeDefault();
 }

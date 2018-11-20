@@ -10,11 +10,9 @@ class Triangle {
     }
     
     static func makeDefault() -> Triangle {
-        
         let point1 = mapToScreen (point: Point(x:1, y:1))
         let point2 = mapToScreen (point: Point(x:4, y:4))
         let point3 = mapToScreen (point: Point(x:1, y:4))
-        
         let triangle = Triangle(p1val: point1,
                             p2val: point2,
                             p3val: point3,
@@ -40,4 +38,3 @@ func makeTriangle(vals: [Point], color: UIColor) throws -> Triangle {
     
     return Triangle(p1val: point1, p2val:point2, p3val:point3, color: color)
 }
-

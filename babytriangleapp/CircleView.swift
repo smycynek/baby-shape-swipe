@@ -1,10 +1,7 @@
-
-
 import Foundation
 import UIKit
 
 final class CircleView: UIView {
-    
     func initCircle() {
        
             let radius = getRandomRadiusWIthinScreenInModelSpace();
@@ -23,8 +20,6 @@ final class CircleView: UIView {
         super.init(coder: coder)
     }
     
-    var circle = Circle.makeDefault();
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
@@ -39,8 +34,7 @@ final class CircleView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(circle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        
         drawGridPoints(yOffset : 40)
-      
     }
+    var circle = Circle.makeDefault();
 }

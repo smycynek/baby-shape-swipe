@@ -10,7 +10,6 @@ class Square {
     }
     
     static func makeDefault() -> Square {
-        
         let point1 = mapToScreen (point: Point(x:3, y:3), yOffset: 40)
         let radius = mapToScreen(val: 3)
         let square = Square(center: point1, side: radius, color: ColorPicker.randomColor())

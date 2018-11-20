@@ -1,23 +1,15 @@
-
-
 import Foundation
 import UIKit
 
 final class RectangleVIew: UIView {
-    
     func initRectangle() {
     
             let side1 = getRandomRadiusWIthinScreenInModelSpace();
             let side2 = getRandomRadiusWIthinScreenInModelSpace();
-        
             let marginval = 3;
-     
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
-            
             self.rectangle = makeRectangle(center: center, side1: side1, side2: side2, color: ColorPicker.randomColor())
-        
-   
     }
     
     override init(frame: CGRect) {
@@ -28,8 +20,6 @@ final class RectangleVIew: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    var rectangle = Rectangle.makeDefault();
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -53,4 +43,5 @@ final class RectangleVIew: UIView {
         drawGridPoints(yOffset : 40)
       
     }
+    var rectangle = Rectangle.makeDefault();
 }

@@ -27,7 +27,6 @@ class Circle {
 }
 
 func makeCircle(center: Point, radius: Int, color: UIColor) -> Circle {
-    
     return Circle(center: mapToScreen(point: center, yOffset: 40), radius: mapToScreen(val: radius), color: color)
 }
 

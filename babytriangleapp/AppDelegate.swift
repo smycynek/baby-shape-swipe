@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  babytriangleapp
-//
-//  Created by Steven Mycynek on 11/12/18.
-//  Copyright © 2018 Steven Mycynek. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
