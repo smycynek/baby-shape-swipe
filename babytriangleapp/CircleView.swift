@@ -5,7 +5,7 @@ final class CircleView: UIView {
     func initCircle() {
        
             let radius = getRandomRadiusWIthinScreenInModelSpace();
-            let marginval = radius;
+            let marginval = radius + 1;
             var points = getRandomSafeModelPoints(count: 1, margin: marginval);
             let center = points[0];
             self.circle = makeCircle(center: center, radius: radius, color: ColorPicker.randomColor())
@@ -34,7 +34,7 @@ final class CircleView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(circle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints(yOffset : 40)
+        drawGridPoints()
     }
     var circle = Circle.makeDefault();
 }

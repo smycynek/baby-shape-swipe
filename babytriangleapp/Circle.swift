@@ -11,7 +11,7 @@ class Circle {
     
     static func makeDefault() -> Circle {
         
-        let point1 = mapToScreen (point: Point(x:3, y:3), yOffset: 40)
+        let point1 = mapToScreen (point: Point(x:3, y:3))
         let radius = mapToScreen(val: 3, offset : 0)
         let circle = Circle(center: point1,
                             radius: radius,
@@ -27,6 +27,6 @@ class Circle {
 }
 
 func makeCircle(center: Point, radius: Int, color: UIColor) -> Circle {
-    return Circle(center: mapToScreen(point: center, yOffset: 40), radius: mapToScreen(val: radius), color: color)
+    return Circle(center: mapToScreen(point: center), radius: mapToScreen(val: radius), color: color)
 }
 

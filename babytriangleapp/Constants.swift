@@ -1,7 +1,7 @@
 import Foundation
 
 class Constants {
-    static var pointSpace = 50;
+    static var pointSpace = 25;
 
 }
 

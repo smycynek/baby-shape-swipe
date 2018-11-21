@@ -42,8 +42,15 @@ func mapToScreen(val: Int, offset: Int=0) -> Int {
 }
 
 func getPointCountsForScreenDimensions() -> [Int] {
-    let maxX = UIScreen.main.bounds.maxX
-    let maxY = UIScreen.main.bounds.maxY-40
+    
+    //let window = UIApplication.shared.keyWindow;
+    //let topPadding = window?.safeAreaInsets.top;
+    //let bottomPadding = window?.safeAreaInsets.bottom;
+    //let rightpadding = window?.safeAreaInsets.right;
+    //let leftPadding = window?.safeAreaInsets.left;
+    
+    let maxX = UIScreen.main.bounds.maxX;
+    let maxY = UIScreen.main.bounds.maxY;
     
     let xc =  Int(Int(maxX) / Int(Constants.pointSpace))
     let yc = Int(Int(maxY) / Int(Constants.pointSpace))
@@ -83,7 +90,7 @@ func getRandomRadiusWIthinScreenInModelSpace() -> Int {
     let pointCount = getPointCountsForScreenDimensions()
     let minCount = pointCount.min()!
  
-    let upperBound = Int( minCount/2) + 1;
+    let upperBound = Int( minCount/2);
     
     var rad = (Int(arc4random_uniform(UInt32(upperBound))));
     if (rad == 0 ) {

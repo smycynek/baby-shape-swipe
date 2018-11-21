@@ -40,7 +40,7 @@ final class RectangleVIew: UIView {
         context?.setFillColor(rectangle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
       
-        drawGridPoints(yOffset : 40)
+        drawGridPoints()
       
     }
     var rectangle = Rectangle.makeDefault();

@@ -5,9 +5,7 @@ final class TriangleView: UIView {
     
     func initTriangle() {
         do {
-            let points = getRandomSafeModelPoints(count : 3, margin: 1)
-                //getRandomSafeModelPointgetRandomPointsWithinScreenInModelSpace(count: 3, margin:0)
-            
+            let points = getRandomSafeModelPoints(count : 3, margin: 1)            
             try self.triangle = makeTriangle(vals: points, color: ColorPicker.randomColor())
         }
         catch {

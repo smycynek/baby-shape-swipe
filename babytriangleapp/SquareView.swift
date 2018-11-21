@@ -35,7 +35,7 @@ final class SquareView: UIView {
         context?.setFillColor(square.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
 
-        drawGridPoints(yOffset : 40)      
+        drawGridPoints()      
     }
     var square = Square.makeDefault();
 }

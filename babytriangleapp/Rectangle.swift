@@ -11,7 +11,7 @@ class Rectangle {
     }
     
     static func makeDefault() -> Rectangle {
-        let point1 = mapToScreen (point: Point(x:3, y:3), yOffset: 40)
+        let point1 = mapToScreen (point: Point(x:3, y:3))
         let side1 = mapToScreen(val: 3)
         let side2 = mapToScreen(val: 5)
         let rectangle = Rectangle(center: point1, side1: side1, side2: side2, color: ColorPicker.randomColor())
@@ -26,7 +26,7 @@ class Rectangle {
 }
 
 func makeRectangle(center: Point, side1: Int, side2: Int, color: UIColor) -> Rectangle {
-    return Rectangle(center: mapToScreen(point: center, yOffset: 40),
+    return Rectangle(center: mapToScreen(point: center),
                      side1: mapToScreen(val: side1),
                      side2: mapToScreen(val: side2),
                      color: color)
