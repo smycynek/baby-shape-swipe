@@ -3,10 +3,10 @@ import UIKit
 class ViewController: UIViewController {
 
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    var currentTriangle = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
-    var currentCircle = CircleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
-    var currentSquare = SquareView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
-    var currentRectangle = RectangleVIew(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    var currentShape : UIView = TriangleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    //var currentCircle = CircleView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    //var currentSquare = SquareView(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
+    //var currentRectangle = RectangleVIew(frame : CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY))
     
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
@@ -48,15 +48,13 @@ class ViewController: UIViewController {
     @objc
     func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) -> Void {
         if (Settings.drawGrid == false) {
-            print("set true")
             Settings.drawGrid = true
         }
         else
         {
-            print("set false")
             Settings.drawGrid = false
         }
-        
+        self.currentShape.setNeedsDisplay()
     }
     
     override func viewDidLoad() {
@@ -88,47 +86,48 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         self.view.addGestureRecognizer(twoFingerTap)
         
+      
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
-        self.currentTriangle = TriangleView(frame: frame)
-        self.currentTriangle.backgroundColor = background
-        self.view.addSubview(self.currentTriangle)
+        self.currentShape = TriangleView(frame: frame)
+        self.currentShape.backgroundColor = background
+       self.view.addSubview(self.currentShape)
     }
 
     func newTriangle() {
         
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = TriangleView(frame: frame)
-        self.currentTriangle.removeFromSuperview()
+        self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(shape)
-        self.currentTriangle = shape
+        self.currentShape = shape
     }
     
     func newCircle() {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = CircleView(frame: frame)
-        self.currentCircle.removeFromSuperview()
+        self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(shape)
-        self.currentCircle = shape
+        self.currentShape = shape
     }
     
     func newSquare() {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = SquareView(frame: frame)
-        self.currentSquare.removeFromSuperview()
+        self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(shape)
-        self.currentSquare = shape
+        self.currentShape = shape
     }
    
     func newRectangle() {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
         let shape = RectangleVIew(frame: frame)
-        self.currentRectangle.removeFromSuperview()
+        self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(shape)
-        self.currentRectangle = shape
+        self.currentShape = shape
     }
     
 }
