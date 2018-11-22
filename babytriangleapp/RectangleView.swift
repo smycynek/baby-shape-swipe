@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class RectangleVIew: UIView {
+final class RectangleView: UIView {
     func initRectangle() {
     
             let side1 = getRandomRadiusWIthinScreenInModelSpace();
@@ -24,7 +24,8 @@ final class RectangleVIew: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
-    
+        context?.setLineJoin(.round)
+        context?.setLineCap(.butt)
         let offsetx = rectangle.side1/2
         let offsety = rectangle.side2/2
       
@@ -35,7 +36,7 @@ final class RectangleVIew: UIView {
         context?.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y + offsety))
         context?.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
         
-        context?.setLineWidth(3.0)
+        context?.setLineWidth(Constants.lineWidth)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(rectangle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)

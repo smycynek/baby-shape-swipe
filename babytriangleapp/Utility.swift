@@ -49,8 +49,8 @@ func getPointCountsForScreenDimensions() -> [Int] {
     //let rightpadding = window?.safeAreaInsets.right;
     //let leftPadding = window?.safeAreaInsets.left;
     
-    let maxX = UIScreen.main.bounds.maxX;
-    let maxY = UIScreen.main.bounds.maxY;
+    let maxX = Int(UIScreen.main.bounds.maxX) - 2*Constants.margin;
+    let maxY = Int(UIScreen.main.bounds.maxY) - 2*Constants.margin;
     
     let xc =  Int(Int(maxX) / Int(Constants.pointSpace))
     let yc = Int(Int(maxY) / Int(Constants.pointSpace))
@@ -77,7 +77,7 @@ func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
         context?.move(to: CGPoint (x: pointMapped.x, y: pointMapped.y))
         
         context?.addArc(center: CGPoint (x: pointMapped.x, y: pointMapped.y), radius: 1, startAngle: 0, endAngle: 6.28, clockwise: true)
-        context?.setLineWidth(3.0)
+        context?.setLineWidth(1.0)
         context?.setFillColor(UIColor.blue.cgColor)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
@@ -117,5 +117,18 @@ func getRandomSafeModelPoints(count: Int, margin : Int=0) -> [Point] {
         points.append(gpoints.randomElement()!)
     }
         return points
+}
+
+
+
+func getSafeFrame() -> CGRect {
+    let frame = CGRect(x: Constants.margin, y: Constants.margin, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
+    return frame;
+}
+
+func getBackgroundFrame() -> CGRect {
+    
+ let frame = CGRect(x:0, y:0, width : UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
+    return frame
 }
 

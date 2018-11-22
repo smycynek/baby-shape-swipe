@@ -30,7 +30,7 @@ final class CircleView: UIView {
             CGPoint(x: circle.center.x, y: circle.center.y),
                         radius: CGFloat (circle.radius),
                         startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
-        context?.setLineWidth(3.0)
+        context?.setLineWidth(Constants.lineWidth)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(circle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)

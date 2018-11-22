@@ -24,13 +24,15 @@ final class SquareView: UIView {
         super.draw(rect)
         let context =  UIGraphicsGetCurrentContext();
         let offset = square.side/2
+        context?.setLineJoin(.round)
+        context?.setLineCap(.butt)
         context?.move(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         context?.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y - offset))
         context?.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y + offset))
         context?.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y + offset))
         context?.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         
-        context?.setLineWidth(3.0)
+        context?.setLineWidth(Constants.lineWidth)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(square.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
