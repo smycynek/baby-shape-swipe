@@ -76,8 +76,13 @@ func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
 
         context?.move(to: CGPoint (x: pointMapped.x, y: pointMapped.y))
         
-        context?.addArc(center: CGPoint (x: pointMapped.x, y: pointMapped.y), radius: 1, startAngle: 0, endAngle: 6.28, clockwise: true)
-        context?.setLineWidth(1.0)
+        context?.addArc(center: CGPoint (x: CGFloat(pointMapped.x),
+                                         y: CGFloat(pointMapped.y)),
+                                         radius: CGFloat(2),
+                                         startAngle: CGFloat(0),
+                                         endAngle: CGFloat(Double.pi * 2),
+                                         clockwise: true)
+        context?.setLineWidth(2.0)
         context?.setFillColor(UIColor.blue.cgColor)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)

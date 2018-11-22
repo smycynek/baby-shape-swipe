@@ -40,7 +40,7 @@ final class RectangleView: UIView {
         path.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y - offsety))
         path.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y + offsety))
         path.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y + offsety))
-        path.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
+        // path.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety)) // not needed with close path
         path.closeSubpath()
         context?.addPath(path)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)

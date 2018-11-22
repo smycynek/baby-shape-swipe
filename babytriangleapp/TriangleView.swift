@@ -33,7 +33,7 @@ final class TriangleView: UIView {
         
          path.addLine(to:  CGPoint(x: triangle.p2.x, y: triangle.p2.y))
          path.addLine(to: CGPoint(x: triangle.p3.x, y: triangle.p3.y))
-         path.addLine(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y))
+         // path.addLine(to: CGPoint(x: triangle.p1.x, y: triangle.p1.y)) // not needed with close path
          path.closeSubpath()
         context?.addPath(path)
         

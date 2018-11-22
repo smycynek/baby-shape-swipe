@@ -29,14 +29,14 @@ final class SquareView: UIView {
         
         let path = CGMutablePath()
         
-        drawGridPoints()
+      
          
         
         path.move(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         path.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y - offset))
         path.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y + offset))
         path.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y + offset))
-        path.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
+        // path.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset)) //not needed with close path
         path.closeSubpath()
         
         context?.addPath(path)
