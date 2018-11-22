@@ -4,9 +4,9 @@ import UIKit
 final class CircleView: UIView {
     func initCircle() {
        
-            let radius = getRandomRadiusWIthinScreenInModelSpace();
-            let marginval = radius + 1;
-            var points = getRandomSafeModelPoints(count: 1, margin: marginval);
+            let radius = getRandomRadiusInModelSpace();
+            let margin = radius + 1;
+            var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin);
             let center = points[0];
             self.circle = makeCircle(center: center, radius: radius, color: ColorPicker.randomColor())
      

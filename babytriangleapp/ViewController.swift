@@ -27,20 +27,26 @@ class ViewController: UIViewController {
         self.newRectangle()
     }
  
-    @objc
-    func handleGestureTap(gesture: UITapGestureRecognizer) -> Void {
+    func randomShape() {
         let randomShapeType = Int(arc4random_uniform(UInt32(4)))
+        //self.newRectangle()
+        
         switch (randomShapeType)
         {
         case 0:
-            self.newRectangle()
+            self.newCircle()
         case 1:
             self.newTriangle()
         case 2:
             self.newSquare()
         default:
-            self.newCircle()
+            self.newRectangle()
         }
+    }
+    @objc
+    func handleGestureTap(gesture: UITapGestureRecognizer) -> Void {
+      self.randomShape()
+ 
     }
     
     @objc
@@ -149,7 +155,10 @@ class ViewController: UIViewController {
         self.currentShape = shape
     }
     
-  
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
+    {
+        self.randomShape()
+    }
     
 }
 

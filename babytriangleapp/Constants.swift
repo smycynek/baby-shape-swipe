@@ -3,6 +3,6 @@ import UIKit
 class Constants {
     static var pointSpace = 25;
     static var margin = 30;
-    static var lineWidth: CGFloat = 4.0    
+    static var lineWidth: CGFloat = 2.0    
 }
 

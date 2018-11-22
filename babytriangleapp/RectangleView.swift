@@ -4,12 +4,17 @@ import UIKit
 final class RectangleView: UIView {
     func initRectangle() {
     
-            let side1 = getRandomRadiusWIthinScreenInModelSpace();
-            let side2 = getRandomRadiusWIthinScreenInModelSpace();
-            let marginval = 3;
-            var points = getRandomSafeModelPoints(count: 1, margin: marginval);
+ 
+            let sides =  getRandomRectangleSidesInModelSpace()
+            let marginX = Int(sides[0]/2) + 1
+            let marginY = Int(sides[1]/2) + 1
+            var points = getRandomModelPoints(count: 1, marginX: marginX, marginY: marginY)
             let center = points[0];
-            self.rectangle = makeRectangle(center: center, side1: side1, side2: side2, color: ColorPicker.randomColor())
+        
+  
+
+        self.rectangle = makeRectangle(center: center,  side1 : sides[0], side2: sides[1], color: ColorPicker.randomColor())
+     
     }
     
     override init(frame: CGRect) {

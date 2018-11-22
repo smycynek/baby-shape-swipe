@@ -18,7 +18,7 @@ class Rectangle {
         return rectangle
     }
 
-    var description: String { return "\(color.description) rectangle: \(center.description), side1 \(side2) side2 \(side2)" }
+    var description: String { return "\(color.description) rectangle: \(center.description), side1 \(side1) side2 \(side2)" }
     var center: Point
     var side1: Int
     var side2: Int

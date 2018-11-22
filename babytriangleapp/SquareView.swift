@@ -4,9 +4,9 @@ import UIKit
 final class SquareView: UIView {
     
     func initSquare() {
-            let side = getRandomRadiusWIthinScreenInModelSpace();
-            let margin = side;
-            var points = getRandomSafeModelPoints(count: 1, margin: margin);
+            let side = getRandomSquareSideInModelSpace();
+        let margin = Int(side/2) + 1;
+        var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin);
             let center = points[0];
             self.square = makeSquare(center: center, side: side, color: ColorPicker.randomColor())
     }
