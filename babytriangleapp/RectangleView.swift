@@ -29,18 +29,21 @@ final class RectangleView: UIView {
         let offsetx = rectangle.side1/2
         let offsety = rectangle.side2/2
       
-        context?.move(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
-        
-        context?.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y - offsety))
-        context?.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y + offsety))
-        context?.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y + offsety))
-        context?.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
         
         context?.setLineWidth(Constants.lineWidth)
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(rectangle.color.cgColor)
+
+        let path = CGMutablePath()
+
+        path.move(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
+        path.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y - offsety))
+        path.addLine(to: CGPoint(x: rectangle.center.x + offsetx, y: rectangle.center.y + offsety))
+        path.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y + offsety))
+        path.addLine(to: CGPoint(x: rectangle.center.x - offsetx, y: rectangle.center.y - offsety))
+        path.closeSubpath()
+        context?.addPath(path)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-      
         drawGridPoints()
       
     }
