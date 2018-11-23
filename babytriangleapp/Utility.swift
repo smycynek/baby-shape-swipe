@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-enum ColinearError: Error {
+enum NearlyDegenerateError: Error {
     case runtimeError(String)
 }
 
@@ -24,18 +24,12 @@ func nearlyDegenerate(vals: [Point]) -> Bool {
     let delta2 = Double(abs((abs(slope1) - abs(slope3))))
     let delta3 = Double(abs((abs(slope3) - abs(slope2))))
     
-    print("deltas")
-    print(delta1)
-    print(delta2)
-    print(delta3)
     var slopeSimilar = false;
-    if ((delta1 < 0.1) && (delta1 < 0.1) && (delta3 < 0.1)) {
+    if ((delta1 < 0.1) && (delta2 < 0.1) && (delta3 < 0.1)) {
         slopeSimilar = true;
     }
     let a = (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2));
-    print("area")
-    print(abs(a))
-    //return (a == 0)
+
     return (Double(abs(a)) < 10) || slopeSimilar
 }
 
@@ -59,21 +53,21 @@ func mapToScreen(val: Int, offset: Int=0) -> Int {
     return (val * Constants.pointSpace) + offset
 }
 
-func getScreenSizeInModelSpace() -> [Int] {
+func getScreenSizeInModelSpace() -> [[Int]] {
     
     let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.margin;
     let maxY = Int(UIScreen.main.bounds.maxY) - 2 * Constants.margin;
-    
+
     let xc =  Int(Int(maxX) / Int(Constants.pointSpace))
     let yc = Int(Int(maxY) / Int(Constants.pointSpace))
-    //print("Screen-X-Max " + String(xc))
-    //print("Screen-Y-Max " + String(yc))
-    return [Int](arrayLiteral: xc, yc)
+    let xRemainder =  Int(Int(maxX) % Int(Constants.pointSpace))
+    let yRemainder =  Int(Int(maxY) % Int(Constants.pointSpace))
+    return [[Int](arrayLiteral: xc, yc), [Int](arrayLiteral: xRemainder, yRemainder)]
 }
 
 func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
     var points = [Point]()
-    let pointCount = getScreenSizeInModelSpace()
+    let pointCount = getScreenSizeInModelSpace()[0]
     for ii in 0+safeMarginX...pointCount[0]-safeMarginX{
         for jj in 0+safeMarginY...pointCount[1]-safeMarginY {
             points.append(Point (x: ii, y: jj))
@@ -83,43 +77,18 @@ func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
 }
 
 func getGridLines(safeMarginX : Int=0, safeMarginY: Int=0) -> [[Point]] {
-    var points = [[Point]]()
+    var linePoints = [[Point]]()
     let dimensions = getScreenSizeInModelSpace()
-    for ii in 0+safeMarginX...dimensions[0]-safeMarginX {
-        points.append([Point(x:ii,y:0), Point(x:ii,y:dimensions[1])])
+    for ii in 0+safeMarginX...dimensions[0][0]-safeMarginX {
+        linePoints.append([Point(x:ii,y:0), Point(x:ii,y:dimensions[0][1])])
     }
     
-    for jj in 0+safeMarginY...dimensions[1]-safeMarginY {
-        points.append([Point(x:0,y:jj), Point(x:dimensions[0],y:jj)])
+    for jj in 0+safeMarginY...dimensions[0][1]-safeMarginY {
+        linePoints.append([Point(x:0,y:jj), Point(x:dimensions[0][0],y:jj)])
     }
     
-return points;
+    return linePoints;
 }
-
-
-func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
-    if (Settings.drawGrid == true) {
-    let context =  UIGraphicsGetCurrentContext();
-    for gpoint in getGridPoints() {
-        let pointMapped = mapToScreen(point: gpoint, xOffset: xOffset, yOffset : yOffset)
-
-        context?.move(to: CGPoint (x: pointMapped.x, y: pointMapped.y))
-        
-        context?.addArc(center: CGPoint (x: CGFloat(pointMapped.x),
-                                         y: CGFloat(pointMapped.y)),
-                                         radius: CGFloat(2),
-                                         startAngle: CGFloat(0),
-                                         endAngle: CGFloat(Double.pi * 2),
-                                         clockwise: true)
-        context?.setLineWidth(2.0)
-        context?.setFillColor(UIColor.blue.cgColor)
-        context?.setStrokeColor(UIColor.black.cgColor)
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        }
-    }
-    return
-}
-
 
 func drawGridLines(xOffset : Int=0, yOffset: Int=0) {
     if (Settings.drawGrid == true) {
@@ -151,7 +120,7 @@ func drawGridLines(xOffset : Int=0, yOffset: Int=0) {
 func getRandomRadiusInModelSpace() -> Int {
 
     let dimensions = getScreenSizeInModelSpace()
-    let minDimension = dimensions.min()!
+    let minDimension = dimensions[0].min()!
  
     let maxRadius = Int( minDimension/2)-1;
     
@@ -165,7 +134,7 @@ func getRandomRadiusInModelSpace() -> Int {
 func getRandomSquareSideInModelSpace() -> Int {
     
     let dimensions = getScreenSizeInModelSpace()
-    let minDimension = dimensions.min()!
+    let minDimension = dimensions[0].min()!
     let maxSide = minDimension - 1;
     
     var side = (Int(arc4random_uniform(UInt32(maxSide))));
@@ -179,12 +148,12 @@ func getRandomRectangleSidesInModelSpace() -> [Int] {
 
     let dimensions = getScreenSizeInModelSpace()
 
-    var sideX = (Int(arc4random_uniform(UInt32(dimensions[0]))));
+    var sideX = (Int(arc4random_uniform(UInt32(dimensions[0][0]))));
     if (sideX == 0 ) {
         sideX = 1;
     }
 
-    var sideY = (Int(arc4random_uniform(UInt32(dimensions[1]))));
+    var sideY = (Int(arc4random_uniform(UInt32(dimensions[0][1]))));
     if (sideY == 0 ) {
         sideY = 1;
     }
@@ -200,11 +169,11 @@ func getRandomRectangleSidesInModelSpace() -> [Int] {
 
 
 func getRandomPointsWithinScreenInModelSpace(count: Int, margin: Int=0) -> [Point] {
-    var pointCounts = getScreenSizeInModelSpace()
+    var dimensions = getScreenSizeInModelSpace()
     var points = [Point]()
     for _ in 1...count {
-        let x = Int(arc4random_uniform(UInt32(pointCounts[0])))
-        let y = Int(arc4random_uniform(UInt32(pointCounts[1])))
+        let x = Int(arc4random_uniform(UInt32(dimensions[0][0])))
+        let y = Int(arc4random_uniform(UInt32(dimensions[0][1])))
         points.append(Point(x: Int(x), y: Int(y)))
     }
     return points
@@ -223,7 +192,11 @@ func getRandomModelPoints(count: Int, marginX : Int=0, marginY : Int=0) -> [Poin
 
 
 func getSafeFrame() -> CGRect {
-    let frame = CGRect(x: Constants.margin + 8 , y: Constants.margin + 4, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
+    
+    let dimensions = getScreenSizeInModelSpace()
+    let xOffset = Int(dimensions[1][0]/2)
+    let yOffset = Int(dimensions[1][1]/2)
+    let frame = CGRect(x: Constants.margin + xOffset , y: Constants.margin + yOffset, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
     return frame;
 }
 
@@ -233,3 +206,14 @@ func getBackgroundFrame() -> CGRect {
     return frame
 }
 
+func contextSetup(color: CGColor) -> CGContext {
+    let context =  UIGraphicsGetCurrentContext();
+    
+    context?.setLineJoin(.round)
+    context?.setLineCap(.butt)
+    
+    context?.setLineWidth(Constants.lineWidth)
+    context?.setStrokeColor(UIColor.black.cgColor)
+    context?.setFillColor(color)
+    return context!
+}

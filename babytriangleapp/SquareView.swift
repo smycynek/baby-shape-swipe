@@ -22,30 +22,16 @@ final class SquareView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        let context =  UIGraphicsGetCurrentContext();
-        let offset = square.side/2
-        context?.setLineJoin(.round)
-        context?.setLineCap(.butt)
-        
+        let context =  contextSetup(color: square.color.cgColor)
         let path = CGMutablePath()
-        
-      
-         
-        
+        let offset = square.side/2
         path.move(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset))
         path.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y - offset))
         path.addLine(to: CGPoint(x: square.center.x + offset, y: square.center.y + offset))
         path.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y + offset))
-        // path.addLine(to: CGPoint(x: square.center.x - offset, y: square.center.y - offset)) //not needed with close path
         path.closeSubpath()
-        
-        context?.addPath(path)
-        
-        context?.setLineWidth(Constants.lineWidth)
-        context?.setStrokeColor(UIColor.black.cgColor)
-        context?.setFillColor(square.color.cgColor)
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        //drawGridPoints()
+        context.addPath(path)
+        context.drawPath(using: CGPathDrawingMode.eoFillStroke)
         drawGridLines()
     }
     var square = Square.makeDefault();
