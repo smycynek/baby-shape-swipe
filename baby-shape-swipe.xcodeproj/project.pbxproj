@@ -38,7 +38,7 @@
 		381684BC219D76F3008ACE50 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		381684BE219D78CC008ACE50 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3847F31E21A3A3A00098F9F4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		38F97944219A612600B2D5D0 /* babytriangleapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babytriangleapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38F97944219A612600B2D5D0 /* baby-shape-swipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baby-shape-swipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F97947219A612600B2D5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F97949219A612600B2D5D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		38F9794C219A612600B2D5D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		38F9793B219A612600B2D5D0 = {
 			isa = PBXGroup;
 			children = (
-				38F97946219A612600B2D5D0 /* babytriangleapp */,
+				38F97946219A612600B2D5D0 /* baby-shape-swipe */,
 				38F97945219A612600B2D5D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,12 +70,12 @@
 		38F97945219A612600B2D5D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				38F97944219A612600B2D5D0 /* babytriangleapp.app */,
+				38F97944219A612600B2D5D0 /* baby-shape-swipe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		38F97946219A612600B2D5D0 /* babytriangleapp */ = {
+		38F97946219A612600B2D5D0 /* baby-shape-swipe */ = {
 			isa = PBXGroup;
 			children = (
 				38F97959219A615800B2D5D0 /* Triangle.swift */,
@@ -97,15 +97,15 @@
 				38F97950219A612700B2D5D0 /* LaunchScreen.storyboard */,
 				38F97953219A612700B2D5D0 /* Info.plist */,
 			);
-			path = babytriangleapp;
+			path = baby-shape-swipe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		38F97943219A612600B2D5D0 /* babytriangleapp */ = {
+		38F97943219A612600B2D5D0 /* baby-shape-swipe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38F97956219A612700B2D5D0 /* Build configuration list for PBXNativeTarget "babytriangleapp" */;
+			buildConfigurationList = 38F97956219A612700B2D5D0 /* Build configuration list for PBXNativeTarget "baby-shape-swipe" */;
 			buildPhases = (
 				38F97940219A612600B2D5D0 /* Sources */,
 				38F97941219A612600B2D5D0 /* Frameworks */,
@@ -115,9 +115,9 @@
 			);
 			dependencies = (
 			);
-			name = babytriangleapp;
-			productName = babytriangleapp;
-			productReference = 38F97944219A612600B2D5D0 /* babytriangleapp.app */;
+			name = baby-shape-swipe;
+			productName = baby-shape-swipe;
+			productReference = 38F97944219A612600B2D5D0 /* baby-shape-swipe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 38F9793F219A612600B2D5D0 /* Build configuration list for PBXProject "babytriangleapp" */;
+			buildConfigurationList = 38F9793F219A612600B2D5D0 /* Build configuration list for PBXProject "baby-shape-swipe" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -148,7 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				38F97943219A612600B2D5D0 /* babytriangleapp */,
+				38F97943219A612600B2D5D0 /* baby-shape-swipe */,
 			);
 		};
 /* End PBXProject section */
@@ -332,13 +332,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS73QBWMLG;
-				INFOPLIST_FILE = babytriangleapp/Info.plist;
+				INFOPLIST_FILE = baby-shape-swipe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.babytriangleapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.baby-shape-swipe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -351,13 +351,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS73QBWMLG;
-				INFOPLIST_FILE = babytriangleapp/Info.plist;
+				INFOPLIST_FILE = baby-shape-swipe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.babytriangleapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.baby-shape-swipe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,7 +367,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38F9793F219A612600B2D5D0 /* Build configuration list for PBXProject "babytriangleapp" */ = {
+		38F9793F219A612600B2D5D0 /* Build configuration list for PBXProject "baby-shape-swipe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38F97954219A612700B2D5D0 /* Debug */,
@@ -376,7 +376,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38F97956219A612700B2D5D0 /* Build configuration list for PBXNativeTarget "babytriangleapp" */ = {
+		38F97956219A612700B2D5D0 /* Build configuration list for PBXNativeTarget "baby-shape-swipe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38F97957219A612700B2D5D0 /* Debug */,
