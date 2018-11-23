@@ -29,7 +29,7 @@ class Triangle {
 }
 
 func makeTriangle(vals: [Point], color: UIColor) throws -> Triangle {
-    if colinear(vals: vals) {
+    if nearlyDegenerate(vals: vals) {
         throw ColinearError.runtimeError("Colinear!")
     }
     let point1 = mapToScreen (point: vals[0])

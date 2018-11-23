@@ -41,7 +41,8 @@ final class TriangleView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(triangle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints()
+        //drawGridPoints()
+        drawGridLines()
     }
     var triangle = Triangle.makeDefault();
 }

@@ -34,7 +34,8 @@ final class CircleView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(circle.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints()
+      //drawGridPoints()
+        drawGridLines()
     }
     var circle = Circle.makeDefault();
 }

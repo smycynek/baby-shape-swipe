@@ -45,7 +45,8 @@ final class SquareView: UIView {
         context?.setStrokeColor(UIColor.black.cgColor)
         context?.setFillColor(square.color.cgColor)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints()      
+        //drawGridPoints()
+        drawGridLines()
     }
     var square = Square.makeDefault();
 }

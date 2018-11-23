@@ -8,7 +8,7 @@ enum ColinearError: Error {
 // Quick check to make sure points don't line in a single line
 // Calculates the area of the square that 2 tringles would make
 // placed side to size.  If zero -- all points are in a line.
-func colinear(vals: [Point]) -> Bool {
+func nearlyDegenerate(vals: [Point]) -> Bool {
     let x1 = vals[0].x
     let y1 = vals[0].y
     let x2 = vals[1].x
@@ -16,9 +16,27 @@ func colinear(vals: [Point]) -> Bool {
     let x3 = vals[2].x
     let y3 = vals[2].y
     
+    let slope1 = Double((vals[0].y - vals[1].y))/(0.01 + Double(vals[0].x) - Double(vals[1].x))
+    let slope2 = Double((vals[0].y - vals[2].y))/(0.01 + Double(vals[0].x) - Double(vals[2].x))
+    let slope3 = Double((vals[1].y - vals[2].y))/(0.01 + Double(vals[1].x) - Double(vals[2].x))
+    
+    let delta1 = Double(abs((abs(slope1) - abs(slope2))))
+    let delta2 = Double(abs((abs(slope1) - abs(slope3))))
+    let delta3 = Double(abs((abs(slope3) - abs(slope2))))
+    
+    print("deltas")
+    print(delta1)
+    print(delta2)
+    print(delta3)
+    var slopeSimilar = false;
+    if ((delta1 < 0.1) && (delta1 < 0.1) && (delta3 < 0.1)) {
+        slopeSimilar = true;
+    }
     let a = (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2));
-
-    return (a==0)
+    print("area")
+    print(abs(a))
+    //return (a == 0)
+    return (Double(abs(a)) < 10) || slopeSimilar
 }
 
 class Point {
@@ -64,6 +82,21 @@ func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
     return points
 }
 
+func getGridLines(safeMarginX : Int=0, safeMarginY: Int=0) -> [[Point]] {
+    var points = [[Point]]()
+    let dimensions = getScreenSizeInModelSpace()
+    for ii in 0+safeMarginX...dimensions[0]-safeMarginX {
+        points.append([Point(x:ii,y:0), Point(x:ii,y:dimensions[1])])
+    }
+    
+    for jj in 0+safeMarginY...dimensions[1]-safeMarginY {
+        points.append([Point(x:0,y:jj), Point(x:dimensions[0],y:jj)])
+    }
+    
+return points;
+}
+
+
 func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
     if (Settings.drawGrid == true) {
     let context =  UIGraphicsGetCurrentContext();
@@ -86,6 +119,35 @@ func drawGridPoints(xOffset : Int=0, yOffset: Int=0) {
     }
     return
 }
+
+
+func drawGridLines(xOffset : Int=0, yOffset: Int=0) {
+    if (Settings.drawGrid == true) {
+        let context =  UIGraphicsGetCurrentContext();
+        for gline in getGridLines() {
+            let pointMapped1 = mapToScreen(point: gline[0], xOffset: xOffset, yOffset : yOffset)
+            let pointMapped2 = mapToScreen(point: gline[1], xOffset: xOffset, yOffset : yOffset)
+            
+            let path = CGMutablePath()
+            
+            path.move(to: CGPoint(x: pointMapped1.x, y: pointMapped1.y))
+            path.addLine(to: CGPoint(x: pointMapped2.x, y: pointMapped2.y))
+
+       
+            
+            context?.addPath(path)
+            
+            context?.setLineWidth(1.0)
+            let transparentGrey = UIColor(red:0.6, green:0.6, blue: 0.6, alpha:0.5)
+            context?.setStrokeColor(transparentGrey.cgColor)
+            context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
+        }
+    }
+    return
+}
+
+
+
 func getRandomRadiusInModelSpace() -> Int {
 
     let dimensions = getScreenSizeInModelSpace()
@@ -161,7 +223,7 @@ func getRandomModelPoints(count: Int, marginX : Int=0, marginY : Int=0) -> [Poin
 
 
 func getSafeFrame() -> CGRect {
-    let frame = CGRect(x: Constants.margin, y: Constants.margin, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
+    let frame = CGRect(x: Constants.margin + 8 , y: Constants.margin + 4, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
     return frame;
 }
 

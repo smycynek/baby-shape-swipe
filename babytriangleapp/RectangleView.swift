@@ -49,7 +49,8 @@ final class RectangleView: UIView {
         path.closeSubpath()
         context?.addPath(path)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        drawGridPoints()
+        //drawGridPoints()
+        drawGridLines()
       
     }
     var rectangle = Rectangle.makeDefault();

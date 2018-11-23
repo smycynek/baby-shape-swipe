@@ -36,11 +36,11 @@ class ViewController: UIViewController {
         case 0:
             self.newCircle()
         case 1:
-            self.newTriangle()
+            self.newRectangle()
         case 2:
             self.newSquare()
         default:
-            self.newRectangle()
+            self.newTriangle()
         }
     }
     @objc
