@@ -33,13 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "appicon120.png",
+      "filename" : "shape_swipe_120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "appicon180.png",
+      "filename" : "shape_swipe_180.png",
       "scale" : "3x"
     },
     {
