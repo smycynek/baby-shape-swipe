@@ -68,8 +68,13 @@ func getScreenSizeInModelSpace() -> [[Int]] {
 func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
     var points = [Point]()
     let pointCount = getScreenSizeInModelSpace()[0]
-    for ii in 0+safeMarginX...pointCount[0]-safeMarginX{
-        for jj in 0+safeMarginY...pointCount[1]-safeMarginY {
+    let xLower = 0 + safeMarginX
+    let xUpper = pointCount[0] - safeMarginX
+    let yLower = 0 + safeMarginY
+    let yUpper = pointCount[1]-safeMarginY
+    
+    for ii in xLower...xUpper{
+        for jj in yLower...yUpper {
             points.append(Point (x: ii, y: jj))
         }
     }

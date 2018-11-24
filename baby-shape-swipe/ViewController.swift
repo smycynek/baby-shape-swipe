@@ -64,10 +64,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // let window = UIApplication.shared.keyWindow
-        //  let topPadding = window?.safeAreaInsets.top
-        // let bottomPadding = window?.safeAreaInsets.bottom
-        
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureLeft))
         swipeLeft.direction = .left
@@ -155,21 +151,6 @@ class ViewController: UIViewController {
         self.currentShape = shape
     }
     
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
-    {
-        self.randomShape()
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-    
-        } else {
-            print("Portrait")
-            
-        }
-    }
-    
+
 }
 
