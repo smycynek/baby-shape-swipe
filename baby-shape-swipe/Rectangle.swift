@@ -14,7 +14,7 @@ class Rectangle {
         let point1 = mapToScreen (point: Point(x:3, y:3))
         let side1 = mapToScreen(val: 3)
         let side2 = mapToScreen(val: 5)
-        let rectangle = Rectangle(center: point1, side1: side1, side2: side2, color: ColorPicker.randomColor())
+        let rectangle = Rectangle(center: point1, side1: side1, side2: side2, color: ColorPicker.randomColor(pastel: Settings.pastelColors))
         return rectangle
     }
 

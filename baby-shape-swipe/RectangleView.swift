@@ -8,7 +8,7 @@ final class RectangleView: UIView {
             let marginY = Int(sides[1]/2) + 1
             var points = getRandomModelPoints(count: 1, marginX: marginX, marginY: marginY)
             let center = points[0];
-        self.rectangle = makeRectangle(center: center,  side1 : sides[0], side2: sides[1], color: ColorPicker.randomColor())
+        self.rectangle = makeRectangle(center: center,  side1 : sides[0], side2: sides[1], color: ColorPicker.randomColor(pastel: Settings.pastelColors))
     }
     
     override init(frame: CGRect) {

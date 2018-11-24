@@ -43,6 +43,21 @@ class Point {
     var y: Int
 }
 
+
+class ModelDimensionInfo {
+    init (xLength : Int, yLength: Int, remainderX: Int, remainderY : Int) {
+        self.xLength = xLength;
+        self.yLength = yLength;
+        self.remainderX = remainderX;
+        self.remainderY = remainderY;
+    }
+    var description: String {return "xLength \(xLength), yLength \(yLength), remainderX \(remainderX), remainderY \(remainderY)"}
+    var xLength : Int;
+    var yLength : Int;
+    var remainderX : Int;
+    var remainderY : Int;
+}
+
 func mapToScreen(point: Point, xOffset: Int=0, yOffset: Int=0) -> Point {
     let x = point.x * Constants.pointSpace + xOffset
     let y = point.y * Constants.pointSpace + yOffset
@@ -53,7 +68,7 @@ func mapToScreen(val: Int, offset: Int=0) -> Int {
     return (val * Constants.pointSpace) + offset
 }
 
-func getScreenSizeInModelSpace() -> [[Int]] {
+func getScreenSizeInModelSpace() -> ModelDimensionInfo {
     
     let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.margin;
     let maxY = Int(UIScreen.main.bounds.maxY) - 2 * Constants.margin;
@@ -62,16 +77,20 @@ func getScreenSizeInModelSpace() -> [[Int]] {
     let yc = Int(Int(maxY) / Int(Constants.pointSpace))
     let xRemainder =  Int(Int(maxX) % Int(Constants.pointSpace))
     let yRemainder =  Int(Int(maxY) % Int(Constants.pointSpace))
-    return [[Int](arrayLiteral: xc, yc), [Int](arrayLiteral: xRemainder, yRemainder)]
+    
+    let dimensionInfo = ModelDimensionInfo(xLength: xc, yLength: yc, remainderX: xRemainder, remainderY: yRemainder)
+    print(dimensionInfo.description)
+    return dimensionInfo
+    //return //[[Int](arrayLiteral: xc, yc), [Int](arrayLiteral: xRemainder, yRemainder)]
 }
 
 func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
     var points = [Point]()
-    let pointCount = getScreenSizeInModelSpace()[0]
+    let pointCount = getScreenSizeInModelSpace()
     let xLower = 0 + safeMarginX
-    let xUpper = pointCount[0] - safeMarginX
+    let xUpper = pointCount.xLength - safeMarginX
     let yLower = 0 + safeMarginY
-    let yUpper = pointCount[1]-safeMarginY
+    let yUpper = pointCount.yLength-safeMarginY
     
     for ii in xLower...xUpper{
         for jj in yLower...yUpper {
@@ -84,12 +103,12 @@ func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
 func getGridLines(safeMarginX : Int=0, safeMarginY: Int=0) -> [[Point]] {
     var linePoints = [[Point]]()
     let dimensions = getScreenSizeInModelSpace()
-    for ii in 0+safeMarginX...dimensions[0][0]-safeMarginX {
-        linePoints.append([Point(x:ii,y:0), Point(x:ii,y:dimensions[0][1])])
+    for ii in 0+safeMarginX...dimensions.xLength-safeMarginX {
+        linePoints.append([Point(x:ii,y:0), Point(x:ii,y:dimensions.yLength)])
     }
     
-    for jj in 0+safeMarginY...dimensions[0][1]-safeMarginY {
-        linePoints.append([Point(x:0,y:jj), Point(x:dimensions[0][0],y:jj)])
+    for jj in 0+safeMarginY...dimensions.yLength-safeMarginY {
+        linePoints.append([Point(x:0,y:jj), Point(x:dimensions.xLength,y:jj)])
     }
     
     return linePoints;
@@ -125,7 +144,7 @@ func drawGridLines(xOffset : Int=0, yOffset: Int=0) {
 func getRandomRadiusInModelSpace() -> Int {
 
     let dimensions = getScreenSizeInModelSpace()
-    let minDimension = dimensions[0].min()!
+    let minDimension = min(dimensions.xLength, dimensions.yLength)
  
     let maxRadius = Int( minDimension/2)-1;
     
@@ -139,7 +158,7 @@ func getRandomRadiusInModelSpace() -> Int {
 func getRandomSquareSideInModelSpace() -> Int {
     
     let dimensions = getScreenSizeInModelSpace()
-    let minDimension = dimensions[0].min()!
+    let minDimension = min(dimensions.xLength, dimensions.yLength)
     let maxSide = minDimension - 1;
     
     var side = (Int(arc4random_uniform(UInt32(maxSide))));
@@ -153,12 +172,12 @@ func getRandomRectangleSidesInModelSpace() -> [Int] {
 
     let dimensions = getScreenSizeInModelSpace()
 
-    var sideX = (Int(arc4random_uniform(UInt32(dimensions[0][0]))));
+    var sideX = (Int(arc4random_uniform(UInt32(dimensions.xLength))));
     if (sideX == 0 ) {
         sideX = 1;
     }
 
-    var sideY = (Int(arc4random_uniform(UInt32(dimensions[0][1]))));
+    var sideY = (Int(arc4random_uniform(UInt32(dimensions.yLength))));
     if (sideY == 0 ) {
         sideY = 1;
     }
@@ -177,8 +196,8 @@ func getRandomPointsWithinScreenInModelSpace(count: Int, margin: Int=0) -> [Poin
     var dimensions = getScreenSizeInModelSpace()
     var points = [Point]()
     for _ in 1...count {
-        let x = Int(arc4random_uniform(UInt32(dimensions[0][0])))
-        let y = Int(arc4random_uniform(UInt32(dimensions[0][1])))
+        let x = Int(arc4random_uniform(UInt32(dimensions.xLength)))
+        let y = Int(arc4random_uniform(UInt32(dimensions.yLength)))
         points.append(Point(x: Int(x), y: Int(y)))
     }
     return points
@@ -199,8 +218,8 @@ func getRandomModelPoints(count: Int, marginX : Int=0, marginY : Int=0) -> [Poin
 func getSafeFrame() -> CGRect {
     
     let dimensions = getScreenSizeInModelSpace()
-    let xOffset = Int(dimensions[1][0]/2)
-    let yOffset = Int(dimensions[1][1]/2)
+    let xOffset = Int(dimensions.remainderX/2)
+    let yOffset = Int(dimensions.remainderY/2)
     let frame = CGRect(x: Constants.margin + xOffset , y: Constants.margin + yOffset, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
     return frame;
 }

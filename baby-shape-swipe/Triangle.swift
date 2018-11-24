@@ -16,7 +16,7 @@ class Triangle {
         let triangle = Triangle(p1val: point1,
                             p2val: point2,
                             p3val: point3,
-                            color: ColorPicker.randomColor()
+                            color: ColorPicker.randomColor(pastel: Settings.pastelColors)
                             )
         return triangle
     }

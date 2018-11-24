@@ -8,7 +8,7 @@ final class SquareView: UIView {
         let margin = Int(side/2) + 1;
         var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin);
             let center = points[0];
-            self.square = makeSquare(center: center, side: side, color: ColorPicker.randomColor())
+        self.square = makeSquare(center: center, side: side, color: ColorPicker.randomColor(pastel: Settings.pastelColors))
     }
     
     override init(frame: CGRect) {

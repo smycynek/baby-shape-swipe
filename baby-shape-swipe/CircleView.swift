@@ -7,7 +7,7 @@ final class CircleView: UIView {
             let margin = radius + 1;
             var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin);
             let center = points[0];
-            self.circle = makeCircle(center: center, radius: radius, color: ColorPicker.randomColor())
+            self.circle = makeCircle(center: center, radius: radius, color: ColorPicker.randomColor(pastel: Settings.pastelColors))
      
         }
     override init(frame: CGRect) {

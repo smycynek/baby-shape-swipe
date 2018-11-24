@@ -15,7 +15,7 @@ class Circle {
         let radius = mapToScreen(val: 3, offset : 0)
         let circle = Circle(center: point1,
                             radius: radius,
-                            color: ColorPicker.randomColor()
+                            color: ColorPicker.randomColor(pastel: Settings.pastelColors)
                             )
         return circle
     }

@@ -151,6 +151,20 @@ class ViewController: UIViewController {
         self.currentShape = shape
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
+    {
+        
+        if (Settings.pastelColors == false) {
+            Settings.pastelColors = true
+        }
+        else
+        {
+            Settings.pastelColors = false
+        }
+        
+        self.randomShape()
+    }
+    
 
 }
 
