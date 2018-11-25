@@ -70,8 +70,8 @@ func mapToScreen(val: Int, offset: Int=0) -> Int {
 
 func getScreenSizeInModelSpace() -> ModelDimensionInfo {
     
-    let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.margin;
-    let maxY = Int(UIScreen.main.bounds.maxY) - 2 * Constants.margin;
+    let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.leftRightMargins;
+    let maxY = Int(UIScreen.main.bounds.maxY) - (Constants.topMargin + Constants.bottomMargin);
 
     let xc =  Int(Int(maxX) / Int(Constants.pointSpace))
     let yc = Int(Int(maxY) / Int(Constants.pointSpace))
@@ -81,7 +81,6 @@ func getScreenSizeInModelSpace() -> ModelDimensionInfo {
     let dimensionInfo = ModelDimensionInfo(xLength: xc, yLength: yc, remainderX: xRemainder, remainderY: yRemainder)
     print(dimensionInfo.description)
     return dimensionInfo
-    //return //[[Int](arrayLiteral: xc, yc), [Int](arrayLiteral: xRemainder, yRemainder)]
 }
 
 func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
@@ -92,13 +91,20 @@ func getGridPoints(safeMarginX : Int=0, safeMarginY: Int=0) -> [Point] {
     let yLower = 0 + safeMarginY
     let yUpper = pointCount.yLength-safeMarginY
     
+    if (( (xLower >= xUpper) || (yLower >= yUpper) )) {
+        points.append(Point(x: xLower, y: yLower))
+    }
+    else {
     for ii in xLower...xUpper{
         for jj in yLower...yUpper {
             points.append(Point (x: ii, y: jj))
         }
     }
+  }
     return points
 }
+
+
 
 func getGridLines(safeMarginX : Int=0, safeMarginY: Int=0) -> [[Point]] {
     var linePoints = [[Point]]()
@@ -220,7 +226,7 @@ func getSafeFrame() -> CGRect {
     let dimensions = getScreenSizeInModelSpace()
     let xOffset = Int(dimensions.remainderX/2)
     let yOffset = Int(dimensions.remainderY/2)
-    let frame = CGRect(x: Constants.margin + xOffset , y: Constants.margin + yOffset, width: Int(UIScreen.main.bounds.maxX) - 2*Constants.margin, height: Int(UIScreen.main.bounds.maxY) - 2*Constants.margin)
+    let frame = CGRect(x: Constants.leftRightMargins + xOffset , y: Constants.topMargin + yOffset, width: Int(UIScreen.main.bounds.maxX) - (2*Constants.leftRightMargins), height: Int(UIScreen.main.bounds.maxY) - (Constants.topMargin + Constants.bottomMargin))
     return frame;
 }
 
