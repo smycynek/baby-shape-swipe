@@ -10,14 +10,17 @@ class Rectangle {
         self.color = color
     }
     
-    static func makeDefault() -> Rectangle {
-        let point1 = mapToScreen (point: Point(x:3, y:3))
-        let side1 = mapToScreen(val: 3)
-        let side2 = mapToScreen(val: 5)
-        let rectangle = Rectangle(center: point1, side1: side1, side2: side2, color: ColorPicker.randomColor(pastel: Settings.pastelColors))
-        return rectangle
+    func getPath() -> CGMutablePath {
+        let offsetx = self.side1/2
+        let offsety = self.side2/2
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: self.center.x - offsetx, y:  self.center.y - offsety))
+        path.addLine(to: CGPoint(x:  self.center.x + offsetx, y:  self.center.y - offsety))
+        path.addLine(to: CGPoint(x:  self.center.x + offsetx, y:  self.center.y + offsety))
+        path.addLine(to: CGPoint(x:  self.center.x - offsetx, y:  self.center.y + offsety))
+        path.closeSubpath()
+        return path
     }
-
     var description: String { return "\(color.description) rectangle: \(center.description), side1 \(side1) side2 \(side2)" }
     var center: Point
     var side1: Int
@@ -25,7 +28,7 @@ class Rectangle {
     var color: UIColor
 }
 
-func makeRectangle(center: Point, side1: Int, side2: Int, color: UIColor) -> Rectangle {
+func makeScreenSpaceRectangle(center: Point, side1: Int, side2: Int, color: UIColor) -> Rectangle {
     return Rectangle(center: mapToScreen(point: center),
                      side1: mapToScreen(val: side1),
                      side2: mapToScreen(val: side2),

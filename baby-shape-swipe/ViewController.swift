@@ -8,7 +8,6 @@ class ViewController: UIViewController {
     
      @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
-
         self.newCircle()
     }
     
@@ -35,12 +34,16 @@ class ViewController: UIViewController {
         {
         case 0:
             self.newCircle()
+            break;
         case 1:
             self.newRectangle()
+            break;
         case 2:
             self.newSquare()
+            break;
         default:
             self.newTriangle()
+            break;
         }
     }
     @objc
@@ -59,6 +62,20 @@ class ViewController: UIViewController {
             Settings.drawGrid = false
         }
         self.currentShape.setNeedsDisplay()
+    }
+
+    
+    override func viewDidAppear( _ animated: Bool) {
+    super.viewDidAppear(animated)
+        
+        let backgroundView = UIView(frame: getBackgroundFrame() )
+        backgroundView.backgroundColor = background
+        
+        self.currentShape = TriangleView(frame: getSafeFrame())
+        self.currentShape.backgroundColor = background
+        self.view.addSubview(backgroundView)
+        self.backgroundView = backgroundView
+        backgroundView.addSubview(self.currentShape)
     }
     
     override func viewDidLoad() {
@@ -86,14 +103,7 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         self.view.addGestureRecognizer(twoFingerTap)
         
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        
-        self.currentShape = TriangleView(frame: getSafeFrame())
-        self.currentShape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        self.backgroundView = backgroundView
-        backgroundView.addSubview(self.currentShape)
+     
     }
 
     func newTriangle() {
