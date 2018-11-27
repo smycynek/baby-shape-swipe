@@ -38,7 +38,7 @@ func getRandomRadiusInModelSpace() -> Int {
     
     let dimensions = getModelDimensionAndScreenPlacementInfo()
     let minDimension = min(dimensions.xLength, dimensions.yLength)
-    let maxRadius = Int( minDimension/2)-1;
+    let maxRadius = Int( minDimension/2);
     let radius = (1...maxRadius-1).randomElement()!;
     return radius
 }
