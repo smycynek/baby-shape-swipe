@@ -2,17 +2,15 @@ import Foundation
 import UIKit
 
 
-class Circle {
+class Circle : Shape {
     init(center: Point, radius: Int, color: UIColor) {
         self.center = center;
         self.radius = radius;
         self.color = color;
-        
     }
     
     func getPath() -> CGMutablePath {
         let path = CGMutablePath()
-        
         path.move(to: CGPoint(x: self.center.x + self.radius, y: self.center.y))
         path.addArc(center:
             CGPoint(x: self.center.x, y: self.center.y),
@@ -21,7 +19,6 @@ class Circle {
         path.closeSubpath()
         return path;
     }
-
 
     var description: String { return "\(color.description) circle: \(center.description), radius \(radius)" }
     var center: Point

@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-final class RectangleView: UIView {
-    func initRectangle() {
+final class RectangleView: ShapeView {
+    override func initShape() {
             let sides =  getRandomRectangleSidesInModelSpace()
             let marginX = Int(sides[0]/2) + 1
             let marginY = Int(sides[1]/2) + 1
@@ -13,22 +13,9 @@ final class RectangleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initRectangle();
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        let context = self.contextSetup(color: shape!.color.cgColor)
-        let path = shape!.getPath()
-        context?.addPath(path)
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        if (Settings.drawGrid == true) {
-            drawGridLines()
-        }
-    }
-    var shape : Rectangle? = nil
 }

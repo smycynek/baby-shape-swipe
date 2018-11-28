@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
-final class SquareView: UIView {
+final class SquareView: ShapeView {
     
-    func initSquare() {
+    override func initShape() {
             let side = getRandomSquareSideInModelSpace();
         let margin = Int(side/2) + 1;
         var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin);
@@ -13,23 +13,9 @@ final class SquareView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initSquare();
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        let context =  self.contextSetup(color: shape!.color.cgColor)
-        let path = shape!.getPath()
-
-        context?.addPath(path)
-        context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
-        if (Settings.drawGrid == true) {
-            drawGridLines()
-        }
-    }
-    var shape : Square? = nil
 }

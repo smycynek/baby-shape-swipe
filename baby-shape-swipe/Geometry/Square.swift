@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-class Square {
+class Square : Shape {
     init(center: Point, side: Int, color: UIColor) {
         self.side = side;
         self.center = center;

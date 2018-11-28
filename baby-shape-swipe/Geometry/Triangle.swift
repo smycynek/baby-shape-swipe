@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class Triangle {
+class Triangle : Shape {
     init(p1val: Point, p2val: Point, p3val: Point, color: UIColor) {
         self.p1 = p1val
         self.p2 = p2val

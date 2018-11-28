@@ -23,6 +23,8 @@
 		381F679921AB90F300F87ADF /* GridUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381F679821AB90F300F87ADF /* GridUtility.swift */; };
 		381F679B21AB916E00F87ADF /* ScreenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381F679A21AB916E00F87ADF /* ScreenUtility.swift */; };
 		3847F31F21A3A3A00098F9F4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3847F31E21A3A3A00098F9F4 /* Settings.swift */; };
+		38F08A9A21AF5C1C00E7ADE7 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F08A9921AF5C1C00E7ADE7 /* Shape.swift */; };
+		38F08A9C21AF5E1700E7ADE7 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F08A9B21AF5E1700E7ADE7 /* ShapeView.swift */; };
 		38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97947219A612600B2D5D0 /* AppDelegate.swift */; };
 		38F9794A219A612600B2D5D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97949219A612600B2D5D0 /* ViewController.swift */; };
 		38F9794D219A612600B2D5D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F9794B219A612600B2D5D0 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		381F679821AB90F300F87ADF /* GridUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridUtility.swift; sourceTree = "<group>"; };
 		381F679A21AB916E00F87ADF /* ScreenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtility.swift; sourceTree = "<group>"; };
 		3847F31E21A3A3A00098F9F4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		38F08A9921AF5C1C00E7ADE7 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		38F08A9B21AF5E1700E7ADE7 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		38F97944219A612600B2D5D0 /* baby-shape-swipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby-shape-swipe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F97947219A612600B2D5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F97949219A612600B2D5D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				381684BC219D76F3008ACE50 /* Circle.swift */,
+				38F08A9921AF5C1C00E7ADE7 /* Shape.swift */,
 				380052CF21A0B07300508F74 /* Rectangle.swift */,
 				381F679221AB904B00F87ADF /* Point.swift */,
 				38F97959219A615800B2D5D0 /* Triangle.swift */,
@@ -103,6 +108,7 @@
 				381684BE219D78CC008ACE50 /* CircleView.swift */,
 				380052CD21A0AD4900508F74 /* SquareView.swift */,
 				380052D121A0B19600508F74 /* RectangleView.swift */,
+				38F08A9B21AF5E1700E7ADE7 /* ShapeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 				381684BF219D78CC008ACE50 /* CircleView.swift in Sources */,
 				381F679721AB90C900F87ADF /* ModelDimensionInfo.swift in Sources */,
 				381684B7219CFEFD008ACE50 /* GraphicsUtility.swift in Sources */,
+				38F08A9C21AF5E1700E7ADE7 /* ShapeView.swift in Sources */,
 				3847F31F21A3A3A00098F9F4 /* Settings.swift in Sources */,
 				381F679B21AB916E00F87ADF /* ScreenUtility.swift in Sources */,
 				380052D021A0B07300508F74 /* Rectangle.swift in Sources */,
@@ -225,6 +232,7 @@
 				381684B5219CFE64008ACE50 /* Color.swift in Sources */,
 				38F9794A219A612600B2D5D0 /* ViewController.swift in Sources */,
 				381F679321AB904B00F87ADF /* Point.swift in Sources */,
+				38F08A9A21AF5C1C00E7ADE7 /* Shape.swift in Sources */,
 				381684BB219D754D008ACE50 /* Constants.swift in Sources */,
 				381684B9219D7473008ACE50 /* TriangleView.swift in Sources */,
 				381F679921AB90F300F87ADF /* GridUtility.swift in Sources */,

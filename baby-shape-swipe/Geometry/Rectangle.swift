@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-class Rectangle {
+class Rectangle : Shape {
     init(center: Point, side1: Int, side2: Int, color: UIColor) {
         self.side1 = side1
         self.side2 = side2
