@@ -1,5 +1,5 @@
 # baby-shape-swipe
-Shape flashcards for parnets kids
+Shape flashcards for parents and kids
 
 ## Basics
 
@@ -17,9 +17,10 @@ have a lot of 'noise' -- animations, sound effects, and worst of all, pop-up adv
 
 You supply the soundtrack by looking at shapes with your child, asking them questions about them, and pointing out their dimensions, orientations and colors.  The triangle shapes are especially interesting, as the random combinations go beyond the simple "equilateral triangle with its base parallel to the bottom of the screen," so kids can learn to recognize shapes in different orientations.  In a future release, I'd like to support squares and rectangles on angles as well as elipses, trapezoids, and parallelograms.
 
-I work on this in small 5 minute increments while learning Cocoa and Swift, so not all the code is as 'best practice' as I'd like, but I'm working on it.
+
 
 ## Building
 
 This app is 100% Swift with no extra libraries, so it should build relatively easily in XCode 10.  After I finish all the icons and other artwork, I'll submit to the app store.
 
+I work on this in small 5 minute increments while learning Cocoa and Swift, so not all the code is as 'best practice' as I'd like, but it's getting there.
