@@ -1,4 +1,8 @@
 # baby-shape-swipe
+
+Version 1.0.0
+Copyright 2018 Steven Mycynek
+
 Shape flashcards for parents and kids
 
 ## Basics
