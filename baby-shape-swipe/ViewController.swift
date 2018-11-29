@@ -1,87 +1,64 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    var currentShape : UIView = TriangleView(frame : getSafeFrame())
-    var backgroundView :  UIView = UIView (frame: getBackgroundFrame())
-    
+    var currentShape: UIView = TriangleView(frame: getSafeFrame())
+    var backgroundView: UIView = UIView (frame: getBackgroundFrame())
      @objc
-    func handleGestureLeft(gesture: UISwipeGestureRecognizer) -> Void {
+    func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
         self.newCircle()
     }
-    
     @objc
-    func handleGestureRight(gesture: UISwipeGestureRecognizer) -> Void {
+    func handleGestureRight(gesture: UISwipeGestureRecognizer) {
         self.newTriangle()
     }
-    
     @objc
-    func handleGestureDown(gesture: UISwipeGestureRecognizer) -> Void {
+    func handleGestureDown(gesture: UISwipeGestureRecognizer) {
         self.newSquare()
     }
-    
     @objc
-    func handleGestureUp(gesture: UISwipeGestureRecognizer) -> Void {
+    func handleGestureUp(gesture: UISwipeGestureRecognizer) {
         self.newRectangle()
     }
- 
     func randomShape() {
         let randomShapeType = Int(arc4random_uniform(UInt32(4)))
-        //self.newRectangle()
-        
-        switch (randomShapeType)
-        {
+        switch randomShapeType {
         case 0:
             self.newCircle()
-            break;
         case 1:
             self.newRectangle()
-            break;
         case 2:
             self.newSquare()
-            break;
         default:
             self.newTriangle()
-            break;
         }
     }
     @objc
-    func handleGestureTap(gesture: UITapGestureRecognizer) -> Void {
+    func handleGestureTap(gesture: UITapGestureRecognizer) {
       self.randomShape()
- 
     }
-    
     @objc
-    func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) -> Void {
-        if (Settings.drawGrid == false) {
+    func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) {
+        if Settings.drawGrid == false {
             Settings.drawGrid = true
-        }
-        else
-        {
+        } else {
             Settings.drawGrid = false
         }
         self.currentShape.setNeedsDisplay()
     }
 
-    
     override func viewDidAppear( _ animated: Bool) {
     super.viewDidAppear(animated)
-        
         let backgroundView = UIView(frame: getBackgroundFrame() )
         backgroundView.backgroundColor = background
-        
         self.currentShape = TriangleView(frame: getSafeFrame())
         self.currentShape.backgroundColor = background
         self.view.addSubview(backgroundView)
         self.backgroundView = backgroundView
         backgroundView.addSubview(self.currentShape)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureLeft))
         swipeLeft.direction = .left
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureRight))
@@ -90,24 +67,18 @@ class ViewController: UIViewController {
         swipeDown.direction = .down
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureUp))
         swipeUp.direction = .up
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTap))
-        
         let twoFingerTap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTwoFingerTap))
         twoFingerTap.numberOfTouchesRequired = 2
-       
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)
         self.view.addGestureRecognizer(swipeUp)
         self.view.addGestureRecognizer(tap)
         self.view.addGestureRecognizer(twoFingerTap)
-        
-     
     }
 
     func newTriangle() {
-        
         let backgroundView = UIView(frame: getBackgroundFrame() )
         backgroundView.backgroundColor = background
         self.backgroundView.removeFromSuperview()
@@ -119,9 +90,7 @@ class ViewController: UIViewController {
         backgroundView.addSubview(shape)
         self.currentShape = shape
     }
-    
     func newCircle() {
-        
         let backgroundView = UIView(frame: getBackgroundFrame() )
         backgroundView.backgroundColor = background
         self.backgroundView.removeFromSuperview()
@@ -133,9 +102,7 @@ class ViewController: UIViewController {
         backgroundView.addSubview(shape)
         self.currentShape = shape
     }
-    
     func newSquare() {
-        
         let backgroundView = UIView(frame: getBackgroundFrame() )
         backgroundView.backgroundColor = background
         self.backgroundView.removeFromSuperview()
@@ -147,7 +114,6 @@ class ViewController: UIViewController {
         backgroundView.addSubview(shape)
         self.currentShape = shape
     }
-   
     func newRectangle() {
         let backgroundView = UIView(frame: getBackgroundFrame() )
         backgroundView.backgroundColor = background
@@ -160,21 +126,12 @@ class ViewController: UIViewController {
         backgroundView.addSubview(shape)
         self.currentShape = shape
     }
-    
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
-    {
-        
-        if (Settings.pastelColors == false) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if Settings.pastelColors == false {
             Settings.pastelColors = true
-        }
-        else
-        {
+        } else {
             Settings.pastelColors = false
         }
-        
         self.randomShape()
     }
-    
-
 }
-

@@ -1,10 +1,9 @@
 import Foundation
 import UIKit
 
-extension UIView
-{
+extension UIView {
     func contextSetup(color: CGColor) -> CGContext? {
-        let context =  UIGraphicsGetCurrentContext();
+        let context =  UIGraphicsGetCurrentContext()
         context?.setLineJoin(.round)
         context?.setLineCap(.butt)
         context?.setLineWidth(Constants.lineWidth)

@@ -1,7 +1,6 @@
 import Foundation
 
-class Settings
-{
+class Settings {
     static var drawGrid = false
     static var pastelColors = false
 }
