@@ -1,11 +1,3 @@
-//
-//  Point.swift
-//  baby-shape-swipe
-//
-//  Created by Steven Mycynek on 11/25/18.
-//  Copyright © 2018 Steven Mycynek. All rights reserved.
-//
-
 import Foundation
 
 class Point {
