@@ -18,6 +18,8 @@ have a lot of 'noise' -- animations, sound effects, and worst of all, pop-up adv
 You supply the soundtrack by looking at shapes with your child, asking them questions about them, and pointing out their dimensions, orientations and colors.  The triangle shapes are especially interesting, as the random combinations go beyond the simple "equilateral triangle with its base parallel to the bottom of the screen," so kids can learn to recognize shapes in different orientations.  In a future release, I'd like to support squares and rectangles on angles as well as elipses, trapezoids, and parallelograms.
 
 
+![Screen Shot](./screen_shot.png)
+
 
 ## Building
 
