@@ -10,10 +10,10 @@ class Square: Shape {
     func getPath() -> CGMutablePath {
         let path = CGMutablePath()
         let offset = self.side/2
-        path.move(to: CGPoint(x: self.center.x - offset, y: self.center.y - offset))
-        path.addLine(to: CGPoint(x: self.center.x + offset, y: self.center.y - offset))
-        path.addLine(to: CGPoint(x: self.center.x + offset, y: self.center.y + offset))
-        path.addLine(to: CGPoint(x: self.center.x - offset, y: self.center.y + offset))
+        path.move(to: CGPoint(x: self.center.xParam - offset, y: self.center.yParam - offset))
+        path.addLine(to: CGPoint(x: self.center.xParam + offset, y: self.center.yParam - offset))
+        path.addLine(to: CGPoint(x: self.center.xParam + offset, y: self.center.yParam + offset))
+        path.addLine(to: CGPoint(x: self.center.xParam - offset, y: self.center.yParam + offset))
         path.closeSubpath()
         return path
     }

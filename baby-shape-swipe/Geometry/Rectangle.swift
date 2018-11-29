@@ -12,14 +12,23 @@ class Rectangle: Shape {
         let offsetx = self.side1/2
         let offsety = self.side2/2
         let path = CGMutablePath()
-        path.move(to: CGPoint(x: self.center.x - offsetx, y: self.center.y - offsety))
-        path.addLine(to: CGPoint(x: self.center.x + offsetx, y: self.center.y - offsety))
-        path.addLine(to: CGPoint(x: self.center.x + offsetx, y: self.center.y + offsety))
-        path.addLine(to: CGPoint(x: self.center.x - offsetx, y: self.center.y + offsety))
+        path.move(to: CGPoint(x: self.center.xParam - offsetx, y: self.center.yParam - offsety))
+        path.addLine(to: CGPoint(x: self.center.xParam + offsetx, y: self.center.yParam - offsety))
+        path.addLine(to: CGPoint(x: self.center.xParam + offsetx, y: self.center.yParam + offsety))
+        path.addLine(to: CGPoint(x: self.center.xParam - offsetx, y: self.center.yParam + offsety))
         path.closeSubpath()
         return path
     }
-    var description: String { return "rectangle: center: \(mapToModel(center).description), side1: \(mapToModel(side1)) side2: \(mapToModel(side2))" }
+    var description: String {
+        let description =
+        """
+        rectangle:
+        center: \(mapToModel(center).description),
+        side1: \(mapToModel(side1))
+        side2: \(mapToModel(side2))
+        """
+        return description
+    }
     var center: Point
     var side1: Int
     var side2: Int

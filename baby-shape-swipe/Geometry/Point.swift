@@ -9,11 +9,11 @@
 import Foundation
 
 class Point {
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
+    init(xParam: Int, yParam: Int) {
+        self.xParam = xParam
+        self.yParam = yParam
     }
-    var description: String { return "(\(x), \(y))" }
-    var x: Int
-    var y: Int
+    var description: String { return "(\(xParam), \(yParam))" }
+    var xParam: Int
+    var yParam: Int
 }

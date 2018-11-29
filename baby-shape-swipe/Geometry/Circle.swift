@@ -9,9 +9,9 @@ class Circle: Shape {
     }
     func getPath() -> CGMutablePath {
         let path = CGMutablePath()
-        path.move(to: CGPoint(x: self.center.x + self.radius, y: self.center.y))
+        path.move(to: CGPoint(x: self.center.xParam + self.radius, y: self.center.yParam))
         path.addArc(center:
-            CGPoint(x: self.center.x, y: self.center.y),
+            CGPoint(x: self.center.xParam, y: self.center.yParam),
                     radius: CGFloat (self.radius),
                     startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: false)
         path.closeSubpath()

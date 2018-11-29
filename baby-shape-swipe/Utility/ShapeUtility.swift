@@ -9,15 +9,15 @@ enum NearlyDegenerateError: Error {
 // Calculates the area of the square that 2 tringles would make
 // placed side to size.  If zero -- all points are in a line.
 func nearlyDegenerate(vals: [Point]) -> Bool {
-    let x1 = vals[0].x
-    let y1 = vals[0].y
-    let x2 = vals[1].x
-    let y2 = vals[1].y
-    let x3 = vals[2].x
-    let y3 = vals[2].y
-    let slope1 = Double((vals[0].y - vals[1].y))/(0.01 + Double(vals[0].x) - Double(vals[1].x))
-    let slope2 = Double((vals[0].y - vals[2].y))/(0.01 + Double(vals[0].x) - Double(vals[2].x))
-    let slope3 = Double((vals[1].y - vals[2].y))/(0.01 + Double(vals[1].x) - Double(vals[2].x))
+    let point1x = vals[0].xParam
+    let point1y = vals[0].yParam
+    let point2x = vals[1].xParam
+    let point2y = vals[1].yParam
+    let point3x = vals[2].xParam
+    let point3y = vals[2].yParam
+    let slope1 = Double((point1y - point2y))/(0.01 + Double(point1x) - Double(point2x))
+    let slope2 = Double((point1y - point3y))/(0.01 + Double(point1x) - Double(point3x))
+    let slope3 = Double((point2y - point3y))/(0.01 + Double(point2x) - Double(point3x))
     let delta1 = Double(abs((abs(slope1) - abs(slope2))))
     let delta2 = Double(abs((abs(slope1) - abs(slope3))))
     let delta3 = Double(abs((abs(slope3) - abs(slope2))))
@@ -25,7 +25,9 @@ func nearlyDegenerate(vals: [Point]) -> Bool {
     if (delta1 < 0.1) && (delta2 < 0.1) && (delta3 < 0.1) {
         slopeSimilar = true
     }
-    let area = (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2))
+    let area = (point1x * (point2y - point3y)) +
+        (point2x * (point3y - point1y)) +
+        (point3x * (point1y - point2y))
     return (Double(abs(area)) < 10) || slopeSimilar
 }
 
