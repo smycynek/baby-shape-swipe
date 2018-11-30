@@ -6,7 +6,13 @@ class ViewController: UIViewController {
     var backgroundView: UIView = UIView (frame: getBackgroundFrame())
      @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
-        self.newCircle()
+        let randomShapeType = Int(arc4random_uniform(UInt32(2)))
+        switch randomShapeType {
+        case 0:
+            self.newCircle()
+        default:
+            self.newEllipse()
+        }
     }
     @objc
     func handleGestureRight(gesture: UISwipeGestureRecognizer) {
@@ -21,7 +27,7 @@ class ViewController: UIViewController {
         self.newRectangle()
     }
     func randomShape() {
-        let randomShapeType = Int(arc4random_uniform(UInt32(4)))
+        let randomShapeType = Int(arc4random_uniform(UInt32(5)))
         switch randomShapeType {
         case 0:
             self.newCircle()
@@ -29,6 +35,8 @@ class ViewController: UIViewController {
             self.newRectangle()
         case 2:
             self.newSquare()
+        case 3:
+            self.newEllipse()
         default:
             self.newTriangle()
         }
@@ -120,6 +128,18 @@ class ViewController: UIViewController {
         self.backgroundView.removeFromSuperview()
         self.backgroundView = backgroundView
         let shape = RectangleView(frame: getSafeFrame())
+        self.currentShape.removeFromSuperview()
+        shape.backgroundColor = background
+        self.view.addSubview(backgroundView)
+        backgroundView.addSubview(shape)
+        self.currentShape = shape
+    }
+    func newEllipse() {
+        let backgroundView = UIView(frame: getBackgroundFrame() )
+        backgroundView.backgroundColor = background
+        self.backgroundView.removeFromSuperview()
+        self.backgroundView = backgroundView
+        let shape = EllipseView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
         self.view.addSubview(backgroundView)
