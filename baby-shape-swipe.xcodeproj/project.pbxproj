@@ -412,14 +412,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MS73QBWMLG;
+				DEVELOPMENT_TEAM = 35W5N8RSA8;
 				INFOPLIST_FILE = "baby-shape-swipe/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.stevenvictor.baby-shape-swipe";
+				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.babyshapeswipe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -431,14 +431,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MS73QBWMLG;
+				DEVELOPMENT_TEAM = 35W5N8RSA8;
 				INFOPLIST_FILE = "baby-shape-swipe/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.stevenvictor.baby-shape-swipe";
+				PRODUCT_BUNDLE_IDENTIFIER = net.stevenvictor.babyshapeswipe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
