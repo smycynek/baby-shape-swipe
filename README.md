@@ -2,12 +2,12 @@
 
 Shape flashcards for parents and kids
 
-Version 1.0
-Copyright 2018 Steven Mycynek
+* Version 1.0
+* Copyright 2018 Steven Mycynek
+* App Store: Coming soon!
 
 ## Privacy policy for iOS AppStore
-
-No data is collected or stored locally or on the cloud.
+* No data in Baby Shape Swipe is collected or stored locally or on the cloud.
 
 ## Basics
 
