@@ -5,6 +5,10 @@ Shape flashcards for parents and kids
 Version 1.0
 Copyright 2018 Steven Mycynek
 
+## Privacy policy for iOS AppStore
+
+No data is collected or stored locally or on the cloud.
+
 ## Basics
 
 Tap, swipe, or shake to see different shapes and colors.
