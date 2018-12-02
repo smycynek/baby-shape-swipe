@@ -7,7 +7,7 @@ Shape flashcards for parents and kids
 * App Store: Coming soon!
 
 ## Privacy policy for iOS AppStore
-* No data in Baby Shape Swipe is collected or stored locally or on the cloud.
+* No personal data from Baby Shape Swipe is collected or stored locally or remotely.
 
 ## Basics
 
