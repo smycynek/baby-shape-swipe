@@ -88,6 +88,72 @@
 			<key>DefaultValue</key>
 			<string>BabyShapeSwipe.com</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Controls</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Tap/Shake</string>
+			<key>Key</key>
+			<string>TAP</string>
+			<key>DefaultValue</key>
+			<string>Random Shape</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Swipe Up</string>
+			<key>Key</key>
+			<string>SWIPE_UP</string>
+			<key>DefaultValue</key>
+			<string>Rectangles</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Swipe Down</string>
+			<key>Key</key>
+			<string>SWIPE_DOWN</string>
+			<key>DefaultValue</key>
+			<string>Squares</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Swipe Right</string>
+			<key>Key</key>
+			<string>SWIPE_RIGHT</string>
+			<key>DefaultValue</key>
+			<string>Triangles</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Swipe Left</string>
+			<key>Key</key>
+			<string>SWIPE_LEFT</string>
+			<key>DefaultValue</key>
+			<string>Circles/Ellipses</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Two-finger Tap</string>
+			<key>Key</key>
+			<string>TWO_FINGER_TAP</string>
+			<key>DefaultValue</key>
+			<string>Grid</string>
+		</dict>
 	</array>
 </dict>
 </plist>
