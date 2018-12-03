@@ -13,7 +13,7 @@ Shape flashcards for parents and kids
 
 Tap, swipe, or shake to see different shapes and colors.
 
-* Swipe in different directions to get squares, rectangles, triangles, circles, or elipses.
+* Swipe in different directions to get squares, rectangles, triangles, circles, or ellipses.
 * Tap or shake to get a random shape.
 * Two-touch tap to toggle the grid on and off.
 * Change color palette in settings
