@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    var currentShape: UIView = TriangleView(frame: getSafeFrame())
+    var currentShape: ShapeView = TriangleView(frame: getSafeFrame())
     var backgroundView: UIView = UIView (frame: getBackgroundFrame())
      @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         } else {
             Settings.drawGrid = false
         }
+        SettingsManager.storeSettings()
         self.currentShape.setNeedsDisplay()
     }
 
@@ -64,6 +65,21 @@ class ViewController: UIViewController {
         self.view.addSubview(backgroundView)
         self.backgroundView = backgroundView
         backgroundView.addSubview(self.currentShape)
+    }
+    @objc
+    func applicationWillEnterForeground (notification: NSNotification) {
+        let currentPastel = Settings.pastelColors
+        SettingsManager.loadSettings()
+        SettingsManager.updateBuildInfo()
+        let shape = self.currentShape
+        if currentPastel != Settings.pastelColors {
+            if Settings.pastelColors == true {
+                shape.shape!.color = ColorPicker.randomColor(pastel: true)
+            } else {
+                 shape.shape!.color = ColorPicker.randomColor(pastel: false)
+            }
+        }
+        self.currentShape.setNeedsDisplay()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +100,10 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(swipeUp)
         self.view.addGestureRecognizer(tap)
         self.view.addGestureRecognizer(twoFingerTap)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ViewController.applicationWillEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
     }
 
     func newTriangle() {
@@ -147,11 +167,6 @@ class ViewController: UIViewController {
         self.currentShape = shape
     }
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if Settings.pastelColors == false {
-            Settings.pastelColors = true
-        } else {
-            Settings.pastelColors = false
-        }
         self.randomShape()
     }
 }

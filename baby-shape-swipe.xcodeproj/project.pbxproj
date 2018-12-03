@@ -25,6 +25,8 @@
 		3837CD2A21B0CD4B0047601A /* Ellipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837CD2921B0CD4B0047601A /* Ellipse.swift */; };
 		3837CD2C21B0CD8A0047601A /* EllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3837CD2B21B0CD8A0047601A /* EllipseView.swift */; };
 		3847F31F21A3A3A00098F9F4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3847F31E21A3A3A00098F9F4 /* Settings.swift */; };
+		38B70CC221B494DB002E6B6D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38B70CC121B494DB002E6B6D /* Settings.bundle */; };
+		38B70CC421B499F1002E6B6D /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B70CC321B499F1002E6B6D /* SettingsManager.swift */; };
 		38F08A9A21AF5C1C00E7ADE7 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F08A9921AF5C1C00E7ADE7 /* Shape.swift */; };
 		38F08A9C21AF5E1700E7ADE7 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F08A9B21AF5E1700E7ADE7 /* ShapeView.swift */; };
 		38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F97947219A612600B2D5D0 /* AppDelegate.swift */; };
@@ -54,6 +56,8 @@
 		3837CD2921B0CD4B0047601A /* Ellipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ellipse.swift; sourceTree = "<group>"; };
 		3837CD2B21B0CD8A0047601A /* EllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseView.swift; sourceTree = "<group>"; };
 		3847F31E21A3A3A00098F9F4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		38B70CC121B494DB002E6B6D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		38B70CC321B499F1002E6B6D /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		38F08A9921AF5C1C00E7ADE7 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		38F08A9B21AF5E1700E7ADE7 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		38F97944219A612600B2D5D0 /* baby-shape-swipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby-shape-swipe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +92,7 @@
 				381684B6219CFEFD008ACE50 /* GraphicsUtility.swift */,
 				381F679821AB90F300F87ADF /* GridUtility.swift */,
 				381F679421AB909800F87ADF /* ShapeUtility.swift */,
+				38B70CC321B499F1002E6B6D /* SettingsManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		38F9793B219A612600B2D5D0 = {
 			isa = PBXGroup;
 			children = (
+				38B70CC121B494DB002E6B6D /* Settings.bundle */,
 				38F97946219A612600B2D5D0 /* baby-shape-swipe */,
 				38F97945219A612600B2D5D0 /* Products */,
 			);
@@ -210,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B70CC221B494DB002E6B6D /* Settings.bundle in Resources */,
 				38F97952219A612700B2D5D0 /* LaunchScreen.storyboard in Resources */,
 				38F9794F219A612700B2D5D0 /* Assets.xcassets in Resources */,
 				38F9794D219A612600B2D5D0 /* Main.storyboard in Resources */,
@@ -234,7 +241,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from # https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from # https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -263,6 +270,7 @@
 				381F679321AB904B00F87ADF /* Point.swift in Sources */,
 				38F08A9A21AF5C1C00E7ADE7 /* Shape.swift in Sources */,
 				381684BB219D754D008ACE50 /* Constants.swift in Sources */,
+				38B70CC421B499F1002E6B6D /* SettingsManager.swift in Sources */,
 				381684B9219D7473008ACE50 /* TriangleView.swift in Sources */,
 				381F679921AB90F300F87ADF /* GridUtility.swift in Sources */,
 				38F97948219A612600B2D5D0 /* AppDelegate.swift in Sources */,

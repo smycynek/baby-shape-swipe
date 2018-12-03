@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Display</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Grid</string>
+			<key>Key</key>
+			<string>GRID_preference</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Color Palette</string>
+			<key>Key</key>
+			<string>PALETTE_preference</string>
+			<key>DefaultValue</key>
+			<string>Bold</string>
+			<key>Titles</key>
+			<array>
+				<string>Bold</string>
+				<string>Pastel</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>Bold</string>
+				<string>Pastel</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>About</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Key</key>
+			<string>VERSION_preference</string>
+			<key>DefaultValue</key>
+			<string>1.1</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Build</string>
+			<key>Key</key>
+			<string>BUILD_preference</string>
+			<key>DefaultValue</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Copyright</string>
+			<key>Key</key>
+			<string>COPYRIGHT</string>
+			<key>DefaultValue</key>
+			<string>Steven Mycynek 2018</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Support / Privacy</string>
+			<key>Key</key>
+			<string>Support</string>
+			<key>DefaultValue</key>
+			<string>BabyShapeSwipe.com</string>
+		</dict>
+	</array>
+</dict>
+</plist>
