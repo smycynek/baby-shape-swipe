@@ -82,9 +82,9 @@
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>Support / Privacy</string>
-			<key>Key</key>
 			<string>Support</string>
+			<key>Key</key>
+			<string>SUPPORT</string>
 			<key>DefaultValue</key>
 			<string>BabyShapeSwipe.com</string>
 		</dict>
