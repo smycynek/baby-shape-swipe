@@ -1,6 +1,6 @@
 import Foundation
 
 class Settings {
-    static var drawGrid = false
-    static var pastelColors = false
+    static var grid = true
+    static var palette = "Pastel"
 }

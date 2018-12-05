@@ -47,10 +47,10 @@ class ViewController: UIViewController {
     }
     @objc
     func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) {
-        if Settings.drawGrid == false {
-            Settings.drawGrid = true
+        if Settings.grid == false {
+            Settings.grid = true
         } else {
-            Settings.drawGrid = false
+            Settings.grid = false
         }
         SettingsManager.storeSettings()
         self.currentShape.setNeedsDisplay()
@@ -68,16 +68,12 @@ class ViewController: UIViewController {
     }
     @objc
     func applicationWillEnterForeground (notification: NSNotification) {
-        let currentPastel = Settings.pastelColors
+        let currentPalette = Settings.palette
         SettingsManager.loadSettings()
         SettingsManager.updateBuildInfo()
         let shape = self.currentShape
-        if currentPastel != Settings.pastelColors {
-            if Settings.pastelColors == true {
-                shape.shape!.color = ColorPicker.randomColor(pastel: true)
-            } else {
-                 shape.shape!.color = ColorPicker.randomColor(pastel: false)
-            }
+        if currentPalette != Settings.palette {
+            shape.shape!.color = ColorPicker.randomColor(palette: Settings.palette)
         }
         self.currentShape.setNeedsDisplay()
     }

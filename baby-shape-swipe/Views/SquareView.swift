@@ -7,7 +7,7 @@ final class SquareView: ShapeView {
         let margin = Int(side/2) + 1
         var points = getRandomModelPoints(count: 1, marginX: margin, marginY: margin)
             let center = points[0]
-        self.shape = makeScreenSpaceSquare(center: center, side: side, color: ColorPicker.randomColor(pastel: Settings.pastelColors))
+        self.shape = makeScreenSpaceSquare(center: center, side: side, color: ColorPicker.randomColor(palette: Settings.palette))
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

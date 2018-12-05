@@ -9,7 +9,7 @@ final class CircleView: ShapeView {
             let center = points[0]
             self.shape = makeScreenSpaceCircle(center: center,
                                                radius: radius,
-                                               color: ColorPicker.randomColor(pastel: Settings.pastelColors))
+                                               color: ColorPicker.randomColor(palette: Settings.palette))
         }
     override init(frame: CGRect) {
         super.init(frame: frame)

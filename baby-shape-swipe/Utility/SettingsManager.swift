@@ -6,22 +6,18 @@ class SettingsManager {
         static let versionKey = "VERSION_preference"
         static let buildKey = "BUILD_preference"
     class func loadSettings () {
+        UserDefaults.standard.register(defaults: [gridKey: true])
+        UserDefaults.standard.register(defaults: [paletteKey: "Pastel"])
         let grid =  UserDefaults.standard.bool(forKey: gridKey)
-        Settings.drawGrid = grid
+        Settings.grid = grid
         let palette = UserDefaults.standard.string(forKey: paletteKey)
-        if palette == "Bold" {
-            Settings.pastelColors = false
-        } else {
-            Settings.pastelColors = true
+        if palette != nil {
+            Settings.palette = palette!
         }
     }
     class func storeSettings () {
-        UserDefaults.standard.set(Settings.drawGrid, forKey: gridKey)
-        if Settings.pastelColors == true {
-            UserDefaults.standard.set("Pastel", forKey: paletteKey)
-        } else {
-            UserDefaults.standard.set("Bold", forKey: paletteKey)
-        }
+        UserDefaults.standard.set(Settings.grid, forKey: gridKey)
+        UserDefaults.standard.set(Settings.palette, forKey: paletteKey)
     }
     class func updateBuildInfo() {
         let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

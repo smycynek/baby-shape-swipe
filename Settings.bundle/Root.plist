@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>GRID_preference</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -30,16 +30,20 @@
 			<key>Key</key>
 			<string>PALETTE_preference</string>
 			<key>DefaultValue</key>
-			<string>Bold</string>
+			<string>Pastel</string>
 			<key>Titles</key>
 			<array>
 				<string>Bold</string>
 				<string>Pastel</string>
+				<string>Desert</string>
+				<string>Ocean</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string>Bold</string>
 				<string>Pastel</string>
+				<string>Desert</string>
+				<string>Ocean</string>
 			</array>
 		</dict>
 		<dict>

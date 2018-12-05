@@ -11,7 +11,7 @@ final class RectangleView: ShapeView {
             self.shape = makeScreenSpaceRectangle(center: center,
                                                   side1: sides[0],
                                                   side2: sides[1],
-                                                  color: ColorPicker.randomColor(pastel: Settings.pastelColors))
+                                                  color: ColorPicker.randomColor(palette: Settings.palette))
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

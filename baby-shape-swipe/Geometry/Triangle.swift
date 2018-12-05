@@ -31,7 +31,7 @@ class Triangle: Shape {
         let triangle = Triangle(point1: point1!,
                             point2: point2!,
                             point3: point3!,
-                            color: ColorPicker.randomColor(pastel: Settings.pastelColors)
+                            color: ColorPicker.randomColor(palette: Settings.palette)
                             )
         return triangle
     }

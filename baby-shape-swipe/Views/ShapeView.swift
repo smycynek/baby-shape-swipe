@@ -19,7 +19,7 @@ class ShapeView: UIView {
         context?.addPath(path)
         context?.drawPath(using: CGPathDrawingMode.eoFillStroke)
         print(shape!.description)
-        if Settings.drawGrid == true {
+        if Settings.grid == true {
             drawGridLines()
         }
     }
