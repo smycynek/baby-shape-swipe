@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var background = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    var background = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1)
     var currentShape: ShapeView = TriangleView(frame: getSafeFrame())
     var backgroundView: UIView = UIView (frame: getBackgroundFrame())
      @objc
@@ -45,8 +45,37 @@ class ViewController: UIViewController {
     func handleGestureTap(gesture: UITapGestureRecognizer) {
       self.randomShape()
     }
-    @objc
-    func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) {
+    @IBAction func clickBold(_ sender: Any) {
+        Settings.palette = "Bold"
+        SettingsManager.storeSettings()
+        handleColorChange()
+    }
+    @IBAction func clickPastel(_ sender: Any) {
+        Settings.palette = "Pastel"
+        SettingsManager.storeSettings()
+        handleColorChange()
+    }
+    @IBAction func clickOcean(_ sender: UIBarButtonItem) {
+        Settings.palette = "Ocean"
+        SettingsManager.storeSettings()
+        handleColorChange()
+    }
+    @IBAction func clickDesert(_ sender: UIBarButtonItem) {
+        Settings.palette = "Desert"
+        SettingsManager.storeSettings()
+        handleColorChange()
+    }
+    @IBAction func clickGrid(_ sender: UIBarButtonItem) {
+        self.handleGridToggle()
+    }
+    @IBAction func clickHelp(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Baby Shape Swipe", message: "Swipe up, down, left, or right for similar shapes.  Shake or tap for random shapes.  Use toolbar buttons to change color palettes and grid visibility.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func handleGridToggle() {
         if Settings.grid == false {
             Settings.grid = true
         } else {
@@ -54,6 +83,10 @@ class ViewController: UIViewController {
         }
         SettingsManager.storeSettings()
         self.currentShape.setNeedsDisplay()
+    }
+    @objc
+    func handleGestureTwoFingerTap(gesture: UIPinchGestureRecognizer) {
+        self.handleGridToggle()
     }
 
     override func viewDidAppear( _ animated: Bool) {
@@ -66,16 +99,16 @@ class ViewController: UIViewController {
         self.backgroundView = backgroundView
         backgroundView.addSubview(self.currentShape)
     }
-    @objc
-    func applicationWillEnterForeground (notification: NSNotification) {
-        let currentPalette = Settings.palette
+    func handleColorChange() {
         SettingsManager.loadSettings()
         SettingsManager.updateBuildInfo()
         let shape = self.currentShape
-        if currentPalette != Settings.palette {
-            shape.shape!.color = ColorPicker.randomColor(palette: Settings.palette)
-        }
+        shape.shape!.color = ColorPicker.randomColor(palette: Settings.palette)
         self.currentShape.setNeedsDisplay()
+    }
+    @objc
+    func applicationWillEnterForeground (notification: NSNotification) {
+        handleColorChange()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

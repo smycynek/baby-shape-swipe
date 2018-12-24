@@ -30,13 +30,13 @@ func getModelDimensionAndScreenPlacementInfo() -> ModelDimensionInfo {
         safeMarginTop = insets?.top
     }
     var safeMarginTopVal = 20
-    var safeMarginBottomVal = 0
+    var safeMarginBottomVal = 44
     if safeMarginTop != nil {
         safeMarginTopVal = Int(safeMarginTop!)
     }
 
     if safeMarginBottom != nil {
-        safeMarginBottomVal = Int(safeMarginBottom!)
+        safeMarginBottomVal = Int(safeMarginBottom!) + 44
     }
 
     let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.leftRightMargins
@@ -65,6 +65,6 @@ func getSafeFrame() -> CGRect {
 }
 
 func getBackgroundFrame() -> CGRect {
-    let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY)
+    let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY-44)
     return frame
 }
