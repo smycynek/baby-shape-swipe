@@ -8,7 +8,6 @@ class ColorPicker {
                                   UIColor.orange, UIColor.yellow )
 
     static var pastelColors =  [UIColor](arrayLiteral:
-                                         UIColor.white,
                                          UIColor(red: 1.0, green: 0.7, blue: 0.7, alpha: 1.0),
                                          UIColor(red: 0.7, green: 1.0, blue: 0.7, alpha: 1.0),
                                          UIColor(red: 0.7, green: 0.7, blue: 1.0, alpha: 1.0),

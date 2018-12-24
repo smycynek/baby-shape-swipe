@@ -4,7 +4,11 @@ class ViewController: UIViewController {
     var background = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1)
     var currentShape: ShapeView = TriangleView(frame: getSafeFrame())
     var backgroundView: UIView = UIView (frame: getBackgroundFrame())
-     @objc
+    @objc
+    func handleGestureLongPress(gesture: UILongPressGestureRecognizer) {
+        self.animate()
+    }
+    @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
         let randomShapeType = Int(arc4random_uniform(UInt32(2)))
         switch randomShapeType {
@@ -74,6 +78,7 @@ class ViewController: UIViewController {
         Swipe up, down, left, or right for similar shapes.
         Shake or tap for random shapes.
         Use toolbar buttons to change color palettes and grid visibility.
+        Press and hold to trace a shape.
         """
         let alert = UIAlertController(title: "Baby Shape Swipe", message: instructions, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
@@ -111,12 +116,16 @@ class ViewController: UIViewController {
         shape.shape!.color = ColorPicker.randomColor(palette: Settings.palette)
         self.currentShape.setNeedsDisplay()
     }
+    func animate() {
+        self.currentShape.animate()
+    }
     @objc
     func applicationWillEnterForeground (notification: NSNotification) {
         handleColorChange()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.handleGestureLongPress))
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureLeft))
         swipeLeft.direction = .left
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGestureRight))
@@ -128,6 +137,7 @@ class ViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTap))
         let twoFingerTap = UITapGestureRecognizer(target: self, action: #selector(self.handleGestureTwoFingerTap))
         twoFingerTap.numberOfTouchesRequired = 2
+        self.view.addGestureRecognizer(longPress)
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
         self.view.addGestureRecognizer(swipeDown)

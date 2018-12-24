@@ -1,16 +1,46 @@
 import Foundation
 import UIKit
 
-class ShapeView: UIView {
+class ShapeView: UIView, CAAnimationDelegate {
     func initShape() {
         preconditionFailure("This method must be overridden")
     }
     override init(frame: CGRect) {
+        self.animationInProgress = false
         super.init(frame: frame)
         self.initShape()
+
     }
     required init?(coder: NSCoder) {
+        self.animationInProgress = false
         super.init(coder: coder)
+    }
+    func animate() {
+        if self.animationInProgress {
+            return
+        }
+        self.animationInProgress = true
+        let animationLayer = getAnimationLayer()
+        self.animation = animationLayer
+        self.layer.addSublayer(animationLayer)
+    }
+    func getAnimationLayer() -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        layer.path = shape!.getPath()
+        self.layer.addSublayer(layer)
+        // Set up the appearance of the shape layer
+        layer.strokeEnd = 0
+        layer.lineWidth = 5
+        layer.strokeColor = UIColor.black.cgColor
+        layer.fillColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5).cgColor
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1
+        animation.duration = 5 // seconds
+        animation.autoreverses = false
+        animation.repeatCount = 1
+        animation.delegate = self
+        layer.add(animation, forKey: "line")
+        return layer
     }
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -23,5 +53,11 @@ class ShapeView: UIView {
             drawGridLines()
         }
     }
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        self.animation?.removeFromSuperlayer()
+        self.animationInProgress = false
+    }
+    var animation: CALayer?
     var shape: Shape?
+    var animationInProgress: Bool
 }
