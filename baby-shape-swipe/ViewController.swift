@@ -71,7 +71,6 @@ class ViewController: UIViewController {
     @IBAction func clickHelp(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Baby Shape Swipe", message: "Swipe up, down, left, or right for similar shapes.  Shake or tap for random shapes.  Use toolbar buttons to change color palettes and grid visibility.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
         }))
         self.present(alert, animated: true, completion: nil)
     }
