@@ -3,7 +3,6 @@ import UIKit
 class ViewController: UIViewController {
     var background = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1)
     var currentShape: ShapeView = TriangleView(frame: getSafeFrame())
-    var backgroundView: UIView = UIView (frame: getBackgroundFrame())
     @objc
     func handleGestureLongPress(gesture: UILongPressGestureRecognizer) {
         if self.currentShape.animationInProgress {
@@ -119,13 +118,9 @@ class ViewController: UIViewController {
 
     override func viewDidAppear( _ animated: Bool) {
     super.viewDidAppear(animated)
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
         self.currentShape = TriangleView(frame: getSafeFrame())
         self.currentShape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        self.backgroundView = backgroundView
-        backgroundView.addSubview(self.currentShape)
+        self.view.addSubview(self.currentShape)
     }
     func handleColorChange() {
         SettingsManager.loadSettings()
@@ -169,63 +164,38 @@ class ViewController: UIViewController {
     }
 
     func newTriangle() {
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        self.backgroundView.removeFromSuperview()
-        self.backgroundView = backgroundView
         let shape = TriangleView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        backgroundView.addSubview(shape)
+        self.view.addSubview(shape)
         self.currentShape = shape
     }
     func newCircle() {
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        self.backgroundView.removeFromSuperview()
-        self.backgroundView = backgroundView
         let shape = CircleView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        backgroundView.addSubview(shape)
+        self.view.addSubview(shape)
         self.currentShape = shape
     }
     func newSquare() {
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        self.backgroundView.removeFromSuperview()
-        self.backgroundView = backgroundView
         let shape = SquareView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        backgroundView.addSubview(shape)
+        self.view.addSubview(shape)
         self.currentShape = shape
     }
     func newRectangle() {
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        self.backgroundView.removeFromSuperview()
-        self.backgroundView = backgroundView
         let shape = RectangleView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        backgroundView.addSubview(shape)
+        self.view.addSubview(shape)
         self.currentShape = shape
     }
     func newEllipse() {
-        let backgroundView = UIView(frame: getBackgroundFrame() )
-        backgroundView.backgroundColor = background
-        self.backgroundView.removeFromSuperview()
-        self.backgroundView = backgroundView
         let shape = EllipseView(frame: getSafeFrame())
         self.currentShape.removeFromSuperview()
         shape.backgroundColor = background
-        self.view.addSubview(backgroundView)
-        backgroundView.addSubview(shape)
+        self.view.addSubview(shape)
         self.currentShape = shape
     }
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

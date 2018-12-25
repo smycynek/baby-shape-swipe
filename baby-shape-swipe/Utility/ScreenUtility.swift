@@ -30,13 +30,13 @@ func getModelDimensionAndScreenPlacementInfo() -> ModelDimensionInfo {
         safeMarginTop = insets?.top
     }
     var safeMarginTopVal = 20
-    var safeMarginBottomVal = 44 // Toolbar height -- must abstract
+    var safeMarginBottomVal = 54 // Toolbar height -- must abstract
     if safeMarginTop != nil {
         safeMarginTopVal = Int(safeMarginTop!)
     }
 
     if safeMarginBottom != nil {
-        safeMarginBottomVal = Int(safeMarginBottom!) + 44 // Toolbar height -- must abstract
+        safeMarginBottomVal = Int(safeMarginBottom!) + 54 // Toolbar height -- must abstract
     }
 
     let maxX = Int(UIScreen.main.bounds.maxX) - 2 * Constants.leftRightMargins
@@ -61,10 +61,5 @@ func getSafeFrame() -> CGRect {
                        y: Constants.topMargin + yOffset + dimensions.safeMarginTop,
                        width: Int(UIScreen.main.bounds.maxX) - (2*Constants.leftRightMargins),
                        height: verticalSize)
-    return frame
-}
-
-func getBackgroundFrame() -> CGRect { // Toolbar height -- must abstract
-    let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.maxX, height: UIScreen.main.bounds.maxY-44)
     return frame
 }
