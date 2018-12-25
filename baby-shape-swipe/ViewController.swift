@@ -6,10 +6,16 @@ class ViewController: UIViewController {
     var backgroundView: UIView = UIView (frame: getBackgroundFrame())
     @objc
     func handleGestureLongPress(gesture: UILongPressGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
         self.animate()
     }
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
         let randomShapeType = Int(arc4random_uniform(UInt32(2)))
         switch randomShapeType {
         case 0:
@@ -20,14 +26,23 @@ class ViewController: UIViewController {
     }
     @objc
     func handleGestureRight(gesture: UISwipeGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
         self.newTriangle()
     }
     @objc
     func handleGestureDown(gesture: UISwipeGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
         self.newSquare()
     }
     @objc
     func handleGestureUp(gesture: UISwipeGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
         self.newRectangle()
     }
     func randomShape() {
@@ -47,6 +62,9 @@ class ViewController: UIViewController {
     }
     @objc
     func handleGestureTap(gesture: UITapGestureRecognizer) {
+        if self.currentShape.animationInProgress {
+            return
+        }
       self.randomShape()
     }
     @IBAction func clickBold(_ sender: Any) {
@@ -75,9 +93,9 @@ class ViewController: UIViewController {
     @IBAction func clickHelp(_ sender: UIBarButtonItem) {
         let instructions =
         """
-        Swipe up, down, left, or right for similar shapes.
-        Shake or tap for random shapes.
-        Use toolbar buttons to change color palettes and grid visibility.
+        \nSwipe up, down, left, or right for similar shapes.\n
+        Shake or tap for random shapes.\n
+        Use toolbar buttons to change color palettes and grid visibility.\n
         Press and hold to trace a shape.
         """
         let alert = UIAlertController(title: "Baby Shape Swipe", message: instructions, preferredStyle: .alert)

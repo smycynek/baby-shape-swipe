@@ -16,9 +16,6 @@ class ShapeView: UIView, CAAnimationDelegate {
         super.init(coder: coder)
     }
     func animate() {
-        if self.animationInProgress {
-            return
-        }
         self.animationInProgress = true
         let animationLayer = getAnimationLayer()
         self.animation = animationLayer
@@ -28,11 +25,12 @@ class ShapeView: UIView, CAAnimationDelegate {
         let layer = CAShapeLayer()
         layer.path = shape!.getPath()
         self.layer.addSublayer(layer)
-        // Set up the appearance of the shape layer
         layer.strokeEnd = 0
         layer.lineWidth = 5
         layer.strokeColor = UIColor.black.cgColor
         layer.fillColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5).cgColor
+        layer.lineJoin = .round
+        layer.lineCap = .butt
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
         animation.duration = 5 // seconds
