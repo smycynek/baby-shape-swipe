@@ -2,7 +2,7 @@
 
 Shape flashcards for parents and kids
 
-* Version 1.1
+* Version 1.7
 * Copyright 2018 Steven Mycynek
 * App Store: Coming soon!
 
@@ -15,8 +15,8 @@ Tap, swipe, or shake to see different shapes and colors.
 
 * Swipe in different directions to get squares, rectangles, triangles, circles, or ellipses.
 * Tap or shake to get a random shape.
-* Two-touch tap to toggle the grid on and off.
-* Change color palette in settings
+* Press and hold to animate tracing the shape outline.
+* Change color palette or grid toggle in toolbars
 
 ## Background
 
@@ -29,6 +29,6 @@ You supply the soundtrack by looking at shapes with your child, asking them ques
 
 ## Building
 
-This app is 100% Swift with no extra libraries, so it should build relatively easily in XCode 10 (iOS 10 or later).  After I finish all the icons and other artwork, I'll submit it to the app store.
+This app is 100% Swift with no extra libraries, so it should build relatively easily in XCode 10 (iOS 9 or later).  After I finish all the icons and other artwork, I'll submit it to the app store.
 
 I work on this in small 5 minute increments while learning Cocoa and Swift, so not all the code is as 'best practice' as I'd like, but it's getting there.
