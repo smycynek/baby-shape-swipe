@@ -2,8 +2,7 @@
 
 Shape flashcards for parents and kids
 
-* Version 1.7
-* Copyright 2018 Steven Mycynek
+* Copyright 2018-2019 Steven Mycynek
 * App Store: Coming soon!
 
 ## Privacy policy for iOS AppStore
