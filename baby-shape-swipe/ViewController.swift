@@ -8,7 +8,7 @@ class ViewController: UIViewController {
         if self.currentShape.animationInProgress {
             return
         }
-        self.animate()
+        self.touchAnimate()
     }
     @objc
     func handleGestureLeft(gesture: UISwipeGestureRecognizer) {
@@ -129,8 +129,8 @@ class ViewController: UIViewController {
         shape.shape!.color = ColorPicker.randomColor(palette: Settings.palette)
         self.currentShape.setNeedsDisplay()
     }
-    func animate() {
-        self.currentShape.animate()
+    func touchAnimate() {
+        self.currentShape.touchAnimate()
     }
     @objc
     func applicationWillEnterForeground (notification: NSNotification) {

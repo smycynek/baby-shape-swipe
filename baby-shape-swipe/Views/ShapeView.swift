@@ -15,13 +15,13 @@ class ShapeView: UIView, CAAnimationDelegate {
         self.animationInProgress = false
         super.init(coder: coder)
     }
-    func animate() {
+    func touchAnimate() {
         self.animationInProgress = true
-        let animationLayer = getAnimationLayer()
+        let animationLayer = getTouchAnimationLayer()
         self.animation = animationLayer
         self.layer.addSublayer(animationLayer)
     }
-    func getAnimationLayer() -> CAShapeLayer {
+    func getTouchAnimationLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
         layer.path = shape!.getPath()
         self.layer.addSublayer(layer)
